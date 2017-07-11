@@ -14,6 +14,7 @@ import org.sweet.frameworks.security.authentication.user.authority.UserAuthority
  * @ModifyRecords:
  */
 public class UserPasswordAuthentication implements Authentication {
+	private Object id=null;
 	private Object account=null;
 	private Object password=null;
 	private Object details=null;
@@ -22,6 +23,10 @@ public class UserPasswordAuthentication implements Authentication {
 	private Object message=null;
 
 	public UserPasswordAuthentication(){
+	}
+
+	public Object getId(){
+		return id;
 	}
 
 	public Object getAccount(){
@@ -46,6 +51,10 @@ public class UserPasswordAuthentication implements Authentication {
 
 	public Object getAuthenticationMessage(){
 		return message;
+	}
+
+	public void setId(Object id){
+		this.id=id;
 	}
 
 	public void setAccount(Object account){

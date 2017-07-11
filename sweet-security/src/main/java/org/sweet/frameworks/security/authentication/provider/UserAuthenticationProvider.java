@@ -45,10 +45,12 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
 			}
 			/* 校验用户权限 */
 			/* 验证通过 */
+			auth.setId(user.getId());
 			auth.setAccount(user.getAccount());
 			auth.setDetails(user.getDetails());
 			auth.setAuthorities(user.getAuthorities());
 			auth.setAuthenticated(true);
+			auth.setAuthenticationMessage("Authentication successfully.");
 		}else{
 			throw new AuthenticationException("The target user does not exist: "+account);
 		}

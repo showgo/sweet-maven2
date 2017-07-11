@@ -54,6 +54,7 @@ public class UserServiceManager extends Service implements UserService {
 			if(null!=map&&map.size()>0){
 				/* 用户信息 */
 				UserBuilder builder=UserBuilder.withAccount(account);
+				builder.id(null!=map.get(User.ID) ? map.get(User.ID).toString() : "");
 				builder.password(null!=map.get(User.PASSWORD) ? map.get(User.PASSWORD).toString() : "");
 				builder.accountExpired(null!=map.get(User.IS_ACCOUNT_EXPIRED)&&"Y".equalsIgnoreCase(map.get(User.IS_ACCOUNT_EXPIRED).toString()) ? true : false);
 				builder.passwordExpired(null!=map.get(User.IS_PASSWORD_EXPIRED)&&"Y".equalsIgnoreCase(map.get(User.IS_PASSWORD_EXPIRED).toString()) ? true : false);
@@ -84,9 +85,26 @@ public class UserServiceManager extends Service implements UserService {
 		private static UserBuilder builder=null;
 		private UserImpl userImpl=null;
 
+		static UserBuilder withId(String id){
+			builder=new UserBuilder();
+			builder.userImpl=new UserImpl();
+			builder.userImpl.setId(id);
+			return builder;
+		}
+
 		static UserBuilder withAccount(String account){
 			builder=new UserBuilder();
 			builder.userImpl=new UserImpl();
+			builder.userImpl.setAccount(account);
+			return builder;
+		}
+
+		UserBuilder id(String id){
+			builder.userImpl.setId(id);
+			return builder;
+		}
+
+		UserBuilder account(String account){
 			builder.userImpl.setAccount(account);
 			return builder;
 		}

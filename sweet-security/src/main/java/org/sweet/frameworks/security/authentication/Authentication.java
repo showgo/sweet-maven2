@@ -13,6 +13,8 @@ import org.sweet.frameworks.security.authentication.user.authority.UserAuthority
  * @ModifyRecords:
  */
 public interface Authentication {
+	Object getId();
+
 	Object getAccount();
 
 	Object getPassword();

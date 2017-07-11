@@ -45,7 +45,7 @@ public final class Session {
 			this.session.setMaxInactiveInterval(sec);
 			/* session(覆盖)添加 */
 			this.sessionUser=new SessionUser(this.session.getId(),authentication);
-			sessionMap.put(this.sessionUser.getAccount(),this);
+			sessionMap.put(this.sessionUser.getId(),this);
 		}finally{
 			lock.unlock();
 		}
@@ -131,7 +131,7 @@ public final class Session {
 		lock.lock();
 		try{
 			if(null!=session){
-				sessionMap.remove(session.getUser().getAccount());
+				sessionMap.remove(session.getUser().getId());
 				session.session.invalidate();
 			}
 		}finally{

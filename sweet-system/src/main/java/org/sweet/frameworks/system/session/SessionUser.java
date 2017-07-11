@@ -26,6 +26,7 @@ import org.sweet.frameworks.security.authentication.user.authority.UserAuthority
 public final class SessionUser implements User {
 	private static final long serialVersionUID=-4615943330385472176L;
 	private String sessionId=null;
+	private String id=null;
 	private String account=null;
 	private Object details=null;
 	private boolean accountExpired=false;
@@ -41,6 +42,7 @@ public final class SessionUser implements User {
 	 */
 	public SessionUser(String sessionId,Authentication authentication){
 		this.sessionId=sessionId;
+		this.id=authentication.getId().toString();
 		this.account=authentication.getAccount().toString();
 		this.details=authentication.getDetails();
 		this.authorities=authentication.getAuthorities();
@@ -48,6 +50,10 @@ public final class SessionUser implements User {
 
 	public String getSessionId(){
 		return sessionId;
+	}
+
+	public String getId(){
+		return id;
 	}
 
 	public String getAccount(){

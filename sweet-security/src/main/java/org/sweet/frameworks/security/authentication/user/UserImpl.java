@@ -15,6 +15,7 @@ import org.sweet.frameworks.security.authentication.user.authority.UserAuthority
  */
 public class UserImpl implements User {
 	private static final long serialVersionUID=-973846806711714319L;
+	private String id=null;
 	private String account=null;
 	private String password=null;
 	private boolean accountExpired=false;
@@ -25,6 +26,10 @@ public class UserImpl implements User {
 	private List<UserAuthority> authorities=new ArrayList<UserAuthority>();
 
 	public UserImpl(){
+	}
+
+	public String getId(){
+		return id;
 	}
 
 	public String getAccount(){
@@ -57,6 +62,10 @@ public class UserImpl implements User {
 
 	public List<UserAuthority> getAuthorities(){
 		return authorities;
+	}
+
+	public void setId(String id){
+		this.id=id;
 	}
 
 	public void setAccount(String account){
