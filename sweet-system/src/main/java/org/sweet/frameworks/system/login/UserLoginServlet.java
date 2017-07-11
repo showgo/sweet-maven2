@@ -13,6 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.sweet.frameworks.foundation.annotation.servlet.Servlet;
 import org.sweet.frameworks.foundation.util.json.JSONUtil;
 import org.sweet.frameworks.foundation.util.map.MapUtil;
+import org.sweet.frameworks.system.security.authentication.Authentication;
+import org.sweet.frameworks.system.security.authentication.provider.UserAuthenticationProvider;
+import org.sweet.frameworks.system.security.authentication.user.UserService;
+import org.sweet.frameworks.system.security.authentication.user.manager.UserServiceManager;
+import org.sweet.frameworks.system.security.exception.AuthenticationException;
 import org.sweet.frameworks.system.session.Session;
 import org.sweet.frameworks.ui.message.Messages;
 
@@ -56,21 +61,24 @@ public final class UserLoginServlet extends HttpServlet {
 	 * @throws IOException
 	 * @throws SQLException
 	 */
-	private void doLogin(HttpServletRequest request,HttpServletResponse response,Map<String,Object> data) throws IOException,
-		SQLException{
+	private void doLogin(HttpServletRequest request,HttpServletResponse response,Map<String,Object> data) throws IOException,SQLException{
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
-		UserService service=new UserService(request);
-		Map<String,Object> ret=service.login(data);
-		if("1".equals(ret.get(Messages.RETCODE))){
-			Session session=Session.create(request,ret);
-			response.sendRedirect(request.getContextPath()+"/main.xhtml?sessionId="+session.getId());
-			return;
-		}else{
-			/* _swtui_page_messages_:用于返回登录信息的特殊参数 */
-			response.sendRedirect(request.getContextPath()+"/index.xhtml?_swtui_page_messages_="+Messages.RETCODE+","+ret.get(
-				Messages.RETCODE)+","+Messages.RETMESG+","+String.valueOf(ret.get(Messages.RETMESG))+"&sessionId=-1");
-			return;
+		UserService service=new UserServiceManager(request);
+		UserAuthenticationProvider provider=new UserAuthenticationProvider(service);
+		try{
+			Authentication auth=provider.authenticate(data.get("account").toString(),data.get("password").toString());
+			if(auth.isAuthenticated()){
+				Session session=Session.create(request,auth);
+				response.sendRedirect(request.getContextPath()+"/main.xhtml?sessionId="+session.getId());
+				return;
+			}else{
+				/* _swtui_page_messages_:用于返回登录信息的特殊参数 */
+				response.sendRedirect(request.getContextPath()+"/index.xhtml?_swtui_page_messages_="+Messages.RETCODE+",-1,"+Messages.RETMESG+","+String.valueOf(auth.getAuthenticationMessage())+"&sessionId=-1");
+				return;
+			}
+		}catch(AuthenticationException e){
+			e.printStackTrace();
 		}
 	}
 
@@ -82,8 +90,7 @@ public final class UserLoginServlet extends HttpServlet {
 	 * @throws IOException
 	 * @throws SQLException
 	 */
-	private void doLogout(HttpServletRequest request,HttpServletResponse response,Map<String,Object> data) throws IOException,
-		SQLException{
+	private void doLogout(HttpServletRequest request,HttpServletResponse response,Map<String,Object> data) throws IOException,SQLException{
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 		Session.destroy(request);
@@ -99,14 +106,14 @@ public final class UserLoginServlet extends HttpServlet {
 	 * @throws IOException
 	 * @throws SQLException
 	 */
-	private void doRegist(HttpServletRequest request,HttpServletResponse response,Map<String,Object> data) throws IOException,
-		SQLException{
+	private void doRegist(HttpServletRequest request,HttpServletResponse response,Map<String,Object> data) throws IOException,SQLException{
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 		ServletOutputStream out=response.getOutputStream();
-		UserService service=new UserService(request);
-		Map<String,Object> ret=service.register(data);
-		out.println(JSONUtil.fromObject(ret));
+		UserService service=new UserServiceManager(request);
+		// FIXME:
+		service.createUser(null);
+		out.println(JSONUtil.fromObject(null));
 		out.flush();
 		out.close();
 	}

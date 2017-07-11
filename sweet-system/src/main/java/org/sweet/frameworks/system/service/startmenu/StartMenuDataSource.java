@@ -1,4 +1,4 @@
-package org.sweet.frameworks.system.startmenu;
+package org.sweet.frameworks.system.service.startmenu;
 
 import java.sql.SQLException;
 import java.util.List;

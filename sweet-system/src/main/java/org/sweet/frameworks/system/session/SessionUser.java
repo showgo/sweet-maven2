@@ -3,7 +3,12 @@
  */
 package org.sweet.frameworks.system.session;
 
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.sweet.frameworks.system.security.authentication.Authentication;
+import org.sweet.frameworks.system.security.authentication.user.User;
+import org.sweet.frameworks.system.security.authentication.user.authority.UserAuthority;
 
 /**
  * 会话用户(SessionUser)
@@ -18,61 +23,62 @@ import java.util.Map;
  * @version:1.0.0
  * @date:wugz/2017年3月21日
  */
-public final class SessionUser {
+public final class SessionUser implements User {
+	private static final long serialVersionUID=-4615943330385472176L;
 	private String sessionId=null;
-	private String userId=null;
-	private String userName=null;
 	private String account=null;
-	private String userType=null;
-	private String orgId=null;
-	private String employeeId=null;
-	private boolean valid=false;
+	private Object details=null;
+	private boolean accountExpired=false;
+	private boolean accountLocked=false;
+	private boolean passwordExpired=false;
+	private boolean enabled=true;
+	private List<UserAuthority> authorities=new ArrayList<UserAuthority>();
 
 	/**
 	 * 构造函数
 	 * @param sessionId
-	 * @param user
+	 * @param authentication
 	 */
-	public SessionUser(String sessionId,Map<String,Object> user){
+	public SessionUser(String sessionId,Authentication authentication){
 		this.sessionId=sessionId;
-		this.userId=null!=user.get("user_id") ? user.get("user_id").toString() : null;
-		this.userName=null!=user.get("user_name") ? user.get("user_name").toString() : null;
-		this.account=null!=user.get("account") ? user.get("account").toString() : null;
-		this.userType=null!=user.get("user_type") ? user.get("user_type").toString() : null;
-		this.orgId=null!=user.get("org_id") ? user.get("org_id").toString() : null;
-		this.employeeId=null!=user.get("employee_id") ? user.get("employee_id").toString() : null;
-		this.valid=null!=user.get("is_valid")&&"Y".equalsIgnoreCase(user.get("is_valid").toString()) ? true : false;
+		this.account=authentication.getAccount().toString();
+		this.details=authentication.getDetails();
+		this.authorities=authentication.getAuthorities();
 	}
 
 	public String getSessionId(){
 		return sessionId;
 	}
 
-	public String getUserId(){
-		return userId;
-	}
-
-	public String getUserName(){
-		return userName;
-	}
-
 	public String getAccount(){
 		return account;
 	}
 
-	public String getUserType(){
-		return userType;
+	public String getPassword(){
+		return "";
 	}
 
-	public String getOrgId(){
-		return orgId;
+	public boolean isAccountExpired(){
+		return accountExpired;
 	}
 
-	public String getEmployeeId(){
-		return employeeId;
+	public boolean isPasswordExpired(){
+		return passwordExpired;
 	}
 
-	public boolean isValid(){
-		return valid;
+	public boolean isLocked(){
+		return accountLocked;
+	}
+
+	public boolean isEnabled(){
+		return enabled;
+	}
+
+	public Object getDetails(){
+		return details;
+	}
+
+	public List<UserAuthority> getAuthorities(){
+		return authorities;
 	}
 }

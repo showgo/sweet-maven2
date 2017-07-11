@@ -23,4 +23,8 @@ public interface Authentication {
 	boolean isAuthenticated();
 
 	void setAuthenticated(boolean isAuthenticated);
+
+	void setAuthenticationMessage(Object message);
+
+	Object getAuthenticationMessage();
 }

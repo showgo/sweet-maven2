@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.sweet.frameworks.system.startmenu;
+package org.sweet.frameworks.system.service.startmenu;
 
 import java.io.IOException;
 import java.io.PrintWriter;

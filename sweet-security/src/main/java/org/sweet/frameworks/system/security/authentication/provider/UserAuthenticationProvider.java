@@ -54,6 +54,7 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
 		}
 		/* 验证未通过 */
 		auth.setAuthenticated(false);
+		auth.setAuthenticationMessage("The target user authentication failure: "+account);
 		return auth;
 	}
 }

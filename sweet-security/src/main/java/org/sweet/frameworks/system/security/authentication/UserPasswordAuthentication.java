@@ -19,6 +19,7 @@ public class UserPasswordAuthentication implements Authentication {
 	private Object details=null;
 	private List<UserAuthority> authorities=new ArrayList<UserAuthority>();
 	private boolean authenticated=false;
+	private Object message=null;
 
 	public UserPasswordAuthentication(){
 	}
@@ -43,6 +44,10 @@ public class UserPasswordAuthentication implements Authentication {
 		return authenticated;
 	}
 
+	public Object getAuthenticationMessage(){
+		return message;
+	}
+
 	public void setAccount(Object account){
 		this.account=account;
 	}
@@ -57,5 +62,9 @@ public class UserPasswordAuthentication implements Authentication {
 
 	public void setAuthenticated(boolean isAuthenticated){
 		this.authenticated=isAuthenticated;
+	}
+
+	public void setAuthenticationMessage(Object message){
+		this.message=message;
 	}
 }

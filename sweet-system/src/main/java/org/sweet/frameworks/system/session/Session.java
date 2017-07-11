@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.sweet.frameworks.foundation.util.debug.Debug;
 import org.sweet.frameworks.system.loader.Config;
+import org.sweet.frameworks.system.security.authentication.Authentication;
 
 /**
  * 系统session(Session)
@@ -34,18 +35,17 @@ public final class Session {
 	/**
 	 * 构造函数
 	 * @param request
-	 * @param user
+	 * @param authentication
 	 */
-	private Session(HttpServletRequest request,Map<String,Object> user){
+	private Session(HttpServletRequest request,Authentication authentication){
 		lock.lock();
 		try{
-			int sec=null!=Config.getConfig("session-timeout") ? Integer.parseInt(Config.getConfig("session-timeout").toString()) : 24
-				*3600;
+			int sec=null!=Config.getConfig("session-timeout") ? Integer.parseInt(Config.getConfig("session-timeout").toString()) : 24*3600;
 			this.session=request.getSession(true);
 			this.session.setMaxInactiveInterval(sec);
 			/* session(覆盖)添加 */
-			this.sessionUser=new SessionUser(this.session.getId(),user);
-			sessionMap.put(this.sessionUser.getUserId(),this);
+			this.sessionUser=new SessionUser(this.session.getId(),authentication);
+			sessionMap.put(this.sessionUser.getAccount(),this);
 		}finally{
 			lock.unlock();
 		}
@@ -75,11 +75,11 @@ public final class Session {
 	/**
 	 * Session创建和初始化
 	 * @param request
-	 * @param user
+	 * @param authentication
 	 * @return
 	 */
-	public static Session create(HttpServletRequest request,Map<String,Object> user){
-		return new Session(request,user);
+	public static Session create(HttpServletRequest request,Authentication authentication){
+		return new Session(request,authentication);
 	}
 
 	/**
@@ -131,7 +131,7 @@ public final class Session {
 		lock.lock();
 		try{
 			if(null!=session){
-				sessionMap.remove(session.getUser().getUserId());
+				sessionMap.remove(session.getUser().getAccount());
 				session.session.invalidate();
 			}
 		}finally{

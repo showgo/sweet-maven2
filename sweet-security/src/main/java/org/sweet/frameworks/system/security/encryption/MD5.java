@@ -1,4 +1,4 @@
-package org.sweet.frameworks.system.security;
+package org.sweet.frameworks.system.security.encryption;
 
 /*
  * A java implementation of the RSA Data Security, Inc. MD5 Message Digest Algorithm, as defined in RFC 1321. Based on the
@@ -22,7 +22,7 @@ public final class MD5 {
 	 * get singleton @return
 	 */
 	private static MD5 getInstance(){
-		if(null==instance) {
+		if(null==instance){
 			instance=new MD5();
 		}
 		return instance;
@@ -182,7 +182,7 @@ public final class MD5 {
 	 * @param str 原密码
 	 * @return 加密后密码
 	 */
-	public static String encode(String str){
-		return MD5.getInstance().calcMD5(str);
+	public static String encode(String string){
+		return MD5.getInstance().calcMD5(string);
 	}
 }
