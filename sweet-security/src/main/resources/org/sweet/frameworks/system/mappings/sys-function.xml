@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sweet.frameworks.system.mappings.Function">
+	<select id="queryAll" parameterType="map" resultType="map">
+		select func_.* from sv_sys_function func_ where func_.is_enabled='Y' union all select turr_.* from sv_sys_tutorial_function turr_ where turr_.is_enabled='Y' order by parent_id asc, seque asc
+	</select>
+	<select id="queryFunction" parameterType="map" resultType="map">
+		select func_.* from sv_sys_function func_ order by func_.parent_id asc, func_.seque asc
+	</select>
+	<insert id="insert" parameterType="map">
+		insert into sys_function(function_id, function_name, parent_id, system_id, action, seque)values(#{function_id}, #{function_name}, #{parent_id}, #{system_id}, #{action}, #{seque})
+	</insert>
+	<update id="update" parameterType="map">
+		update sys_function set function_name=#{function_name}, parent_id=#{parent_id}, system_id=#{system_id}, action=#{action}, seque=#{seque} where function_id=#{function_id}
+	</update>
+	<delete id="delete" parameterType="map">
+		delete from sys_function where function_id=#{function_id}
+	</delete>
+	<select id="queryTutorial" parameterType="map" resultType="map">
+		select turr_.* from sv_sys_tutorial_function turr_ order by turr_.parent_id asc, turr_.seque asc
+	</select>
+	<insert id="insertTutorial" parameterType="map">
+		insert into sys_tutorial_function(function_id, function_name, parent_id, system_id, action, seque)values(#{function_id}, #{function_name}, #{parent_id}, #{system_id}, #{action}, #{seque})
+	</insert>
+	<update id="updateTutorial" parameterType="map">
+		update sys_tutorial_function set function_name=#{function_name}, parent_id=#{parent_id}, system_id=#{system_id}, action=#{action}, seque=#{seque} where function_id=#{function_id}
+	</update>
+	<delete id="deleteTutorial" parameterType="map">
+		delete from sys_tutorial_function where function_id=#{function_id}
+	</delete>
+</mapper>

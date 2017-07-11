@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<faces-config>
+	<component description="css标签">
+		<component-type>SWTCSSLoader</component-type>
+		<component-class>org.sweet.frameworks.ui.components.resources.SWTCSSLoader</component-class>
+		<component-public>
+			<attribute name="library" defaultValue="null" required="false" />
+			<attribute name="href" defaultValue="null" required="true" />
+			<attribute name="charset" defaultValue="utf-8" required="false" />
+		</component-public>
+	</component>
+
+	<component description="script标签">
+		<component-type>SWTScriptLoader</component-type>
+		<component-class>org.sweet.frameworks.ui.components.resources.SWTScriptLoader</component-class>
+		<component-public>
+			<attribute name="library" defaultValue="null" required="false" />
+			<attribute name="href" defaultValue="null" required="false" />
+			<attribute name="charset" defaultValue="utf-8" required="false" />
+		</component-public>
+	</component>
+
+	<component description="view标签,布局组件">
+		<component-type>SWTView</component-type>
+		<component-class>org.sweet.frameworks.ui.components.layout.SWTView</component-class>
+		<attribute name="id" defaultValue="null" required="false" generator="auto" />
+		<attribute name="xtype" defaultValue="view" required="false" />
+		<attribute name="class" defaultValue="easyui-layout" required="false" />
+		<attribute name="layout" defaultValue="border" required="false" />
+		<attribute name="fit" defaultValue="true" required="false" />
+		<component-public />
+	</component>
+
+	<component description="panel标签,布局组件">
+		<component-type>SWTPanel</component-type>
+		<component-class>org.sweet.frameworks.ui.components.layout.SWTPanel</component-class>
+		<attribute name="id" defaultValue="null" required="false" generator="auto" />
+		<attribute name="xtype" defaultValue="panel" required="false" />
+		<attribute name="class" defaultValue="easyui-panel" required="false" />
+		<component-public>
+			<attribute name="title" defaultValue="null" required="false" />
+			<attribute name="icons" defaultValue="null" required="false" />
+			<attribute name="content" defaultValue="null" required="false" />
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="height" defaultValue="null" required="false" />
+			<attribute name="margins" defaultValue="0 0 0 0" required="false" />
+			<attribute name="paddings" defaultValue="0 0 0 0" required="false" />
+			<attribute name="background" defaultValue="#fcffff" required="false" />
+			<attribute name="layout" defaultValue="null" required="false" />
+			<attribute name="location" defaultValue="center" required="true" />
+			<attribute name="border" defaultValue="true" required="false" />
+			<attribute name="split" defaultValue="true" required="false" />
+			<attribute name="autoOpen" defaultValue="true" required="false" />
+			<attribute name="collapsed" defaultValue="false" required="false" />
+			<attribute name="minimized" defaultValue="false" required="false" />
+			<attribute name="maximized" defaultValue="false" required="false" />
+			<attribute name="collapsible" defaultValue="false" required="false" />
+			<attribute name="minimizable" defaultValue="false" required="false" />
+			<attribute name="maximizable" defaultValue="false" required="false" />
+			<attribute name="closable" defaultValue="false" required="false" />
+		</component-public>
+	</component>
+
+	<component description="tabpanel标签,容器">
+		<component-type>SWTTabPanel</component-type>
+		<component-class>org.sweet.frameworks.ui.components.panel.tab.SWTTabPanel</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="tabpanel" required="false" />
+		<attribute name="class" defaultValue="easyui-tabs" required="false" />
+		<component-public>
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="height" defaultValue="null" required="false" />
+			<attribute name="margins" defaultValue="0 0 0 0" required="false" />
+			<attribute name="background" defaultValue="#fcffff" required="false" />
+			<attribute name="activeItem" defaultValue="null" required="false" />
+			<attribute name="location" defaultValue="center" required="true" />
+			<attribute name="border" defaultValue="true" required="false" />
+			<attribute name="position" defaultValue="top" required="false" />
+			<attribute name="split" defaultValue="true" required="false" />
+		</component-public>
+	</component>
+
+	<component description="tabitem标签">
+		<component-type>SWTTabItem</component-type>
+		<component-class>org.sweet.frameworks.ui.components.panel.tab.SWTTabItem</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="tabitem" required="false" />
+		<component-public>
+			<attribute name="icons" defaultValue="null" required="false" />
+			<attribute name="title" defaultValue="null" required="true" />
+			<attribute name="closable" defaultValue="false" required="false" />
+			<attribute name="href" defaultValue="null" required="false" />
+		</component-public>
+	</component>
+
+	<component description="logopanel标签,容器">
+		<component-type>SWTLogoPanel</component-type>
+		<component-class>org.sweet.frameworks.ui.components.panel.logo.SWTLogoPanel</component-class>
+		<attribute name="id" defaultValue="null" required="false" generator="auto" />
+		<attribute name="xtype" defaultValue="logopanel" required="false" />
+		<attribute name="class" defaultValue="sweet-logo" required="false" />
+		<component-public>
+			<attribute name="icons" defaultValue="null" required="false" />
+			<attribute name="title" defaultValue="null" required="true" />
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="height" defaultValue="null" required="false" />
+			<attribute name="margins" defaultValue="0 0 0 0" required="false" />
+			<attribute name="location" defaultValue="center" required="true" />
+			<attribute name="border" defaultValue="true" required="false" />
+		</component-public>
+	</component>
+
+	<component description="logobutton标签">
+		<component-type>SWTLogoBtn</component-type>
+		<component-class>org.sweet.frameworks.ui.components.panel.logo.SWTLogoBtn</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="logobtn" required="false" />
+		<attribute name="class" defaultValue="easyui-linkbutton" required="false" />
+		<component-public>
+			<attribute name="icons" defaultValue="null" required="false" />
+			<attribute name="title" defaultValue="null" required="true" />
+			<attribute name="align" defaultValue="left" required="false" />
+			<attribute name="colSpan" defaultValue="1" required="false" />
+			<attribute name="handler" defaultValue="null" required="false" />
+		</component-public>
+	</component>
+
+	<component description="navpanel标签,容器">
+		<component-type>SWTNavPanel</component-type>
+		<component-class>org.sweet.frameworks.ui.components.panel.nav.SWTNavPanel</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="navpanel" required="false" />
+		<attribute name="class" defaultValue="easyui-tabs" required="false" />
+		<component-public>
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="height" defaultValue="null" required="false" />
+			<attribute name="margins" defaultValue="0 0 0 0" required="false" />
+			<attribute name="background" defaultValue="#fcffff" required="false" />
+			<attribute name="location" defaultValue="center" required="true" />
+			<attribute name="border" defaultValue="true" required="false" />
+		</component-public>
+	</component>
+
+	<component description="navpage标签">
+		<component-type>SWTNavPage</component-type>
+		<component-class>org.sweet.frameworks.ui.components.panel.nav.SWTNavPage</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="navpage" required="false" />
+		<component-public>
+			<attribute name="icons" defaultValue="null" required="false" />
+			<attribute name="title" defaultValue="null" required="true" />
+			<attribute name="closable" defaultValue="false" required="false" />
+			<attribute name="href" defaultValue="null" required="false" />
+		</component-public>
+	</component>
+
+	<component description="tree标签,容器组件">
+		<component-type>SWTTreePanel</component-type>
+		<component-class>org.sweet.frameworks.ui.components.panel.tree.SWTTreePanel</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="treepanel" required="false" />
+		<attribute name="class" defaultValue="easyui-tree" required="false" />
+		<component-public>
+			<attribute name="title" defaultValue="null" required="false" />
+			<attribute name="icons" defaultValue="null" required="false" />
+			<attribute name="rootText" defaultValue="null" required="false" />
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="height" defaultValue="null" required="false" />
+			<attribute name="margins" defaultValue="0 0 0 0" required="false" />
+			<attribute name="paddings" defaultValue="0 0 0 0" required="false" />
+			<attribute name="background" defaultValue="#fcffff" required="false" />
+			<attribute name="location" defaultValue="center" required="true" />
+			<attribute name="border" defaultValue="true" required="false" />
+			<attribute name="split" defaultValue="true" required="false" />
+			<attribute name="url" defaultValue="null" required="false" />
+			<attribute name="source" defaultValue="null" required="false" />
+			<attribute name="lines" defaultValue="true" required="false" />
+			<attribute name="sync" defaultValue="true" required="false" />
+			<attribute name="checked" defaultValue="false" required="false" />
+			<attribute name="cascadeChecked" defaultValue="true" required="false" />
+			<attribute name="onlyLeafChecked" defaultValue="false" required="false" />
+			<attribute name="onClick" defaultValue="null" required="false" />
+			<attribute name="onContextMenu" defaultValue="null" required="false" />
+			<attribute name="autoOpen" defaultValue="true" required="false" />
+			<attribute name="collapsed" defaultValue="false" required="false" />
+			<attribute name="minimized" defaultValue="false" required="false" />
+			<attribute name="maximized" defaultValue="false" required="false" />
+			<attribute name="collapsible" defaultValue="false" required="false" />
+			<attribute name="minimizable" defaultValue="false" required="false" />
+			<attribute name="maximizable" defaultValue="false" required="false" />
+			<attribute name="closable" defaultValue="false" required="false" />
+		</component-public>
+	</component>
+
+	<component description="treeitems标签">
+		<component-type>SWTTreeItem</component-type>
+		<component-class>org.sweet.frameworks.ui.components.panel.tree.SWTTreeItem</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="treeitem" required="false" />
+		<component-public>
+			<attribute name="icons" defaultValue="null" required="false" />
+			<attribute name="text" defaultValue="null" required="true" />
+			<attribute name="href" defaultValue="#" required="false" />
+			<attribute name="active" defaultValue="false" required="false" />
+		</component-public>
+	</component>
+
+	<component description="drawerpanel标签,容器">
+		<component-type>SWTDrawerPanel</component-type>
+		<component-class>org.sweet.frameworks.ui.components.panel.drawer.SWTDrawerPanel</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="drawerpanel" required="false" />
+		<attribute name="class" defaultValue="easyui-accordion" required="false" />
+		<component-public>
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="height" defaultValue="null" required="false" />
+			<attribute name="margins" defaultValue="0 0 0 0" required="false" />
+			<attribute name="background" defaultValue="#fcffff" required="false" />
+			<attribute name="activeItem" defaultValue="null" required="false" />
+			<attribute name="location" defaultValue="center" required="true" />
+			<attribute name="border" defaultValue="true" required="false" />
+			<attribute name="split" defaultValue="true" required="false" />
+		</component-public>
+	</component>
+
+	<component description="draweritem标签">
+		<component-type>SWTDrawerItem</component-type>
+		<component-class>org.sweet.frameworks.ui.components.panel.drawer.SWTDrawerItem</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="draweritem" required="false" />
+		<component-public>
+			<attribute name="icons" defaultValue="null" required="false" />
+			<attribute name="title" defaultValue="null" required="true" />
+			<attribute name="border" defaultValue="true" required="false" />
+		</component-public>
+	</component>
+
+	<component description="topbar标签,按钮">
+		<component-type>SWTTopBar</component-type>
+		<component-class>org.sweet.frameworks.ui.components.panel.bar.SWTTopBar</component-class>
+		<attribute name="id" defaultValue="null" required="false" generator="custom" />
+		<attribute name="xtype" defaultValue="panelbuttons" required="false" />
+		<attribute name="class" defaultValue="sweet-panel-tbar" required="false" />
+		<attribute name="position" defaultValue="top" required="false" />
+		<component-public>
+			<attribute name="align" defaultValue="left" required="false" />
+		</component-public>
+	</component>
+
+	<component description="bottombar标签,按钮">
+		<component-type>SWTBottomBar</component-type>
+		<component-class>org.sweet.frameworks.ui.components.panel.bar.SWTBottomBar</component-class>
+		<attribute name="id" defaultValue="null" required="false" generator="custom" />
+		<attribute name="xtype" defaultValue="panelbuttons" required="false" />
+		<attribute name="class" defaultValue="sweet-panel-bbar" required="false" />
+		<attribute name="position" defaultValue="bottom" required="false" />
+		<component-public>
+			<attribute name="align" defaultValue="left" required="false" />
+		</component-public>
+	</component>
+
+	<component description="dialogButtons标签,按钮">
+		<component-type>SWTDialogButtons</component-type>
+		<component-class>org.sweet.frameworks.ui.components.dialog.SWTDialogButtons</component-class>
+		<attribute name="id" defaultValue="null" required="false" generator="custom" />
+		<attribute name="xtype" defaultValue="dialogbuttons" required="false" />
+		<attribute name="position" defaultValue="bottom" required="false" />
+		<component-public>
+			<attribute name="align" defaultValue="right" required="false" />
+		</component-public>
+	</component>
+
+	<component description="dialog标签,对话框组件">
+		<component-type>SWTDialog</component-type>
+		<component-class>org.sweet.frameworks.ui.components.dialog.SWTDialog</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="dialog" required="false" />
+		<attribute name="class" defaultValue="easyui-dialog" required="false" />
+		<component-public>
+			<attribute name="title" defaultValue="null" required="true" />
+			<attribute name="icons" defaultValue="null" required="false" />
+			<attribute name="width" defaultValue="null" required="true" />
+			<attribute name="height" defaultValue="null" required="true" />
+			<attribute name="background" defaultValue="#fcffff" required="false" />
+			<attribute name="url" defaultValue="null" required="false" />
+			<attribute name="modal" defaultValue="true" required="false" />
+			<attribute name="autoOpen" defaultValue="false" required="false" />
+			<attribute name="collapsed" defaultValue="false" required="false" />
+			<attribute name="minimized" defaultValue="false" required="false" />
+			<attribute name="maximized" defaultValue="false" required="false" />
+			<attribute name="collapsible" defaultValue="false" required="false" />
+			<attribute name="minimizable" defaultValue="true" required="false" />
+			<attribute name="maximizable" defaultValue="true" required="false" />
+			<attribute name="closable" defaultValue="true" required="false" />
+		</component-public>
+	</component>
+
+	<component description="grid标签,表格组件">
+		<component-type>SWTGrid</component-type>
+		<component-class>org.sweet.frameworks.ui.components.grid.SWTGrid</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="gridpanel" required="false" />
+		<attribute name="class" defaultValue="easyui-datagrid" required="false" />
+		<component-public>
+			<attribute name="title" defaultValue="null" required="false" />
+			<attribute name="icons" defaultValue="null" required="false" />
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="height" defaultValue="null" required="false" />
+			<attribute name="margins" defaultValue="0 0 0 0" required="false" />
+			<attribute name="paddings" defaultValue="0 0 0 0" required="false" />
+			<attribute name="background" defaultValue="#fcffff" required="false" />
+			<attribute name="location" defaultValue="center" required="true" />
+			<attribute name="border" defaultValue="true" required="false" />
+			<attribute name="split" defaultValue="true" required="false" />
+			<attribute name="fitColumns" defaultValue="false" required="false" />
+			<attribute name="rownumbers" defaultValue="true" required="false" />
+			<attribute name="singleSelect" defaultValue="true" required="false" />
+			<attribute name="striped" defaultValue="true" required="false" />
+			<attribute name="pagination" defaultValue="true" required="false" />
+			<attribute name="pageList" defaultValue="[5,15,25,50,100,-1]" required="false" />
+			<attribute name="pageSize" defaultValue="50" required="false" />
+			<attribute name="source" defaultValue="null" required="true" />
+			<attribute name="content" defaultValue="null" required="false" />
+			<attribute name="onClick" defaultValue="null" required="false" />
+			<attribute name="autoOpen" defaultValue="true" required="false" />
+			<attribute name="collapsed" defaultValue="false" required="false" />
+			<attribute name="minimized" defaultValue="false" required="false" />
+			<attribute name="maximized" defaultValue="false" required="false" />
+			<attribute name="collapsible" defaultValue="false" required="false" />
+			<attribute name="minimizable" defaultValue="false" required="false" />
+			<attribute name="maximizable" defaultValue="false" required="false" />
+			<attribute name="closable" defaultValue="false" required="false" />
+		</component-public>
+	</component>
+
+	<component description="gridcolumn标签">
+		<component-type>SWTGridColumn</component-type>
+		<component-class>org.sweet.frameworks.ui.components.grid.SWTGridColumn</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<component-public>
+			<attribute name="name" defaultValue="null" required="true" />
+			<attribute name="align" defaultValue="left" required="false" />
+			<attribute name="title" defaultValue="null" required="true" />
+			<attribute name="hidden" defaultValue="null" required="false" />
+			<attribute name="width" defaultValue="75" required="false" />
+			<attribute name="onClick" defaultValue="null" required="false" />
+			<attribute name="onDblClick" defaultValue="null" required="false" />
+			<attribute name="onRender" defaultValue="null" required="false" />
+		</component-public>
+	</component>
+
+	<component description="gridrow标签">
+		<component-type>SWTGridRow</component-type>
+		<component-class>org.sweet.frameworks.ui.components.grid.SWTGridRow</component-class>
+		<attribute name="id" defaultValue="null" required="false" generator="auto" />
+		<component-public />
+	</component>
+
+	<component description="form标签,表单组件">
+		<component-type>SWTForm</component-type>
+		<component-class>org.sweet.frameworks.ui.components.form.SWTForm</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="formpanel" required="false" />
+		<attribute name="class" defaultValue="easyui-panel" required="false" />
+		<component-public>
+			<attribute name="title" defaultValue="null" required="false" />
+			<attribute name="icons" defaultValue="null" required="false" />
+			<attribute name="labelWidth" defaultValue="75" required="false" />
+			<attribute name="columns" defaultValue="3" required="false" />
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="height" defaultValue="null" required="false" />
+			<attribute name="margins" defaultValue="0 0 0 0" required="false" />
+			<attribute name="paddings" defaultValue="0 0 0 0" required="false" />
+			<attribute name="background" defaultValue="#fcffff" required="false" />
+			<attribute name="location" defaultValue="center" required="true" />
+			<attribute name="border" defaultValue="true" required="false" />
+			<attribute name="split" defaultValue="true" required="false" />
+			<attribute name="lines" defaultValue="false" required="false" />
+			<attribute name="action" defaultValue="null" required="false" />
+			<attribute name="autoOpen" defaultValue="true" required="false" />
+			<attribute name="collapsed" defaultValue="false" required="false" />
+			<attribute name="minimized" defaultValue="false" required="false" />
+			<attribute name="maximized" defaultValue="false" required="false" />
+			<attribute name="collapsible" defaultValue="false" required="false" />
+			<attribute name="minimizable" defaultValue="false" required="false" />
+			<attribute name="maximizable" defaultValue="false" required="false" />
+			<attribute name="closable" defaultValue="false" required="false" />
+		</component-public>
+	</component>
+
+	<component description="buttonSplit标签">
+		<component-type>SWTButtonSplit</component-type>
+		<component-class>org.sweet.frameworks.ui.components.form.button.SWTButtonSplit</component-class>
+		<attribute name="id" defaultValue="null" required="false" generator="auto" />
+		<attribute name="xtype" defaultValue="buttonSplit" required="false" />
+		<attribute name="class" defaultValue="text-center" required="false" />
+		<component-public>
+			<attribute name="width" defaultValue="4" required="false" />
+		</component-public>
+	</component>
+
+	<component description="label标签">
+		<component-type>SWTLabel</component-type>
+		<component-class>org.sweet.frameworks.ui.components.form.label.SWTLabel</component-class>
+		<attribute name="id" defaultValue="null" required="false" generator="auto" />
+		<attribute name="xtype" defaultValue="label" required="false" />
+		<component-public>
+			<attribute name="text" defaultValue="null" required="false" />
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="align" defaultValue="left" required="false" />
+			<attribute name="colSpan" defaultValue="1" required="false" />
+		</component-public>
+	</component>
+
+	<component description="buttons标签">
+		<component-type>SWTButtons</component-type>
+		<component-class>org.sweet.frameworks.ui.components.form.button.SWTButtons</component-class>
+		<attribute name="id" defaultValue="null" required="false" generator="auto" />
+		<attribute name="xtype" defaultValue="buttons" required="false" />
+		<component-public>
+			<attribute name="align" defaultValue="right" required="false" />
+			<attribute name="colSpan" defaultValue="1" required="false" />
+		</component-public>
+	</component>
+
+	<component description="groups标签">
+		<component-type>SWTGroups</component-type>
+		<component-class>org.sweet.frameworks.ui.components.form.group.SWTGroups</component-class>
+		<attribute name="id" defaultValue="null" required="false" generator="auto" />
+		<attribute name="xtype" defaultValue="groups" required="false" />
+		<attribute name="class" defaultValue="sweet-form-control-groups" required="false" />
+		<component-public>
+			<attribute name="align" defaultValue="left" required="false" />
+			<attribute name="colSpan" defaultValue="1" required="false" />
+		</component-public>
+	</component>
+
+	<component description="button标签">
+		<component-type>SWTButton</component-type>
+		<component-class>org.sweet.frameworks.ui.components.form.button.SWTButton</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="button" required="false" />
+		<attribute name="class" defaultValue="easyui-linkbutton" required="false" />
+		<component-public>
+			<attribute name="title" defaultValue="null" required="true" />
+			<attribute name="icons" defaultValue="null" required="false" />
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="height" defaultValue="null" required="false" />
+			<attribute name="align" defaultValue="left" required="false" />
+			<attribute name="colSpan" defaultValue="1" required="false" />
+			<attribute name="handler" defaultValue="null" required="false" />
+		</component-public>
+	</component>
+
+	<component description="linkedbutton标签">
+		<component-type>SWTLinkedButton</component-type>
+		<component-class>org.sweet.frameworks.ui.components.form.button.SWTLinkedButton</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="linkedbutton" required="false" />
+		<attribute name="class" defaultValue="easyui-linkbutton" required="false" />
+		<component-public>
+			<attribute name="title" defaultValue="null" required="true" />
+			<attribute name="icons" defaultValue="null" required="false" />
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="height" defaultValue="null" required="false" />
+			<attribute name="align" defaultValue="left" required="false" />
+			<attribute name="colSpan" defaultValue="1" required="false" />
+			<attribute name="handler" defaultValue="null" required="false" />
+		</component-public>
+	</component>
+
+	<component description="switchbutton标签">
+		<component-type>SWTSwitchButton</component-type>
+		<component-class>org.sweet.frameworks.ui.components.form.button.SWTSwitchButton</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="switchbutton" required="false" />
+		<attribute name="class" defaultValue="easyui-switchbutton" required="false" />
+		<component-public>
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="height" defaultValue="null" required="false" />
+			<attribute name="handleWidth" defaultValue="null" required="false" />
+			<attribute name="handleText" defaultValue="null" required="false" />
+			<attribute name="onText" defaultValue="null" required="false" />
+			<attribute name="offText" defaultValue="null" required="false" />
+			<attribute name="value" defaultValue="null" required="false" />
+			<attribute name="checked" defaultValue="false" required="false" />
+			<attribute name="reversed" defaultValue="false" required="false" />
+			<attribute name="disabled" defaultValue="false" required="false" />
+			<attribute name="readOnly" defaultValue="false" required="false" />
+			<attribute name="align" defaultValue="left" required="false" />
+			<attribute name="colSpan" defaultValue="1" required="false" />
+			<attribute name="handler" defaultValue="null" required="false" />
+		</component-public>
+	</component>
+
+	<component description="combobox标签">
+		<component-type>SWTCombobox</component-type>
+		<component-class>org.sweet.frameworks.ui.components.form.combobox.SWTCombobox</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="combobox" required="false" />
+		<attribute name="class" defaultValue="easyui-combobox" required="false" />
+		<component-public>
+			<attribute name="label" defaultValue="null" required="false" />
+			<attribute name="endLabel" defaultValue="null" required="false" />
+			<attribute name="title" defaultValue="null" required="false" />
+			<attribute name="value" defaultValue="null" required="false" />
+			<attribute name="readOnly" defaultValue="true" required="false" />
+			<attribute name="required" defaultValue="false" required="false" />
+			<attribute name="emptyText" defaultValue="null" required="false" />
+			<attribute name="valueField" defaultValue="id" required="false" />
+			<attribute name="textField" defaultValue="text" required="false" />
+			<attribute name="source" defaultValue="null" required="false" />
+			<attribute name="align" defaultValue="left" required="false" />
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="colSpan" defaultValue="1" required="false" />
+			<attribute name="handler" defaultValue="null" required="false" />
+		</component-public>
+	</component>
+
+	<component description="combobox-option标签">
+		<component-type>SWTComboboxOption</component-type>
+		<component-class>org.sweet.frameworks.ui.components.form.combobox.SWTComboboxOption</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="combobox-option" required="false" />
+		<component-public>
+			<attribute name="value" defaultValue="null" required="false" />
+			<attribute name="text" defaultValue="null" required="false" />
+		</component-public>
+	</component>
+
+	<component description="date标签">
+		<component-type>SWTDate</component-type>
+		<component-class>org.sweet.frameworks.ui.components.form.date.SWTDate</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="date" required="false" />
+		<attribute name="class" defaultValue="easyui-datebox" required="false" />
+		<component-public>
+			<attribute name="label" defaultValue="null" required="false" />
+			<attribute name="endLabel" defaultValue="null" required="false" />
+			<attribute name="title" defaultValue="null" required="false" />
+			<attribute name="value" defaultValue="null" required="false" />
+			<attribute name="readOnly" defaultValue="false" required="false" />
+			<attribute name="required" defaultValue="false" required="false" />
+			<attribute name="emptyText" defaultValue="null" required="false" />
+			<attribute name="format" defaultValue="yyyy/mm/dd" required="false" />
+			<attribute name="align" defaultValue="left" required="false" />
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="colSpan" defaultValue="1" required="false" />
+			<attribute name="handler" defaultValue="null" required="false" />
+		</component-public>
+	</component>
+
+	<component description="file标签">
+		<component-type>SWTFile</component-type>
+		<component-class>org.sweet.frameworks.ui.components.form.filebox.SWTFile</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="file" required="false" />
+		<attribute name="class" defaultValue="easyui-filebox" required="false" />
+		<component-public>
+			<attribute name="label" defaultValue="null" required="false" />
+			<attribute name="endLabel" defaultValue="null" required="false" />
+			<attribute name="buttonIcon" defaultValue="textbox-file" required="false" />
+			<attribute name="buttonText" defaultValue="null" required="false" />
+			<attribute name="title" defaultValue="null" required="false" />
+			<attribute name="value" defaultValue="null" required="false" />
+			<attribute name="readOnly" defaultValue="false" required="false" />
+			<attribute name="required" defaultValue="false" required="false" />
+			<attribute name="emptyText" defaultValue="null" required="false" />
+			<attribute name="align" defaultValue="left" required="false" />
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="colSpan" defaultValue="1" required="false" />
+			<attribute name="handler" defaultValue="null" required="false" />
+		</component-public>
+	</component>
+
+	<component description="hidden标签">
+		<component-type>SWTHidden</component-type>
+		<component-class>org.sweet.frameworks.ui.components.form.textbox.SWTHidden</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="text" required="false" />
+		<attribute name="class" defaultValue="easyui-textbox" required="false" />
+		<component-public>
+			<attribute name="label" defaultValue="null" required="false" />
+			<attribute name="endLabel" defaultValue="null" required="false" />
+			<attribute name="title" defaultValue="null" required="false" />
+			<attribute name="value" defaultValue="null" required="false" />
+			<attribute name="readOnly" defaultValue="false" required="false" />
+			<attribute name="required" defaultValue="false" required="false" />
+			<attribute name="emptyText" defaultValue="null" required="false" />
+			<attribute name="align" defaultValue="left" required="false" />
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="colSpan" defaultValue="1" required="false" />
+			<attribute name="handler" defaultValue="null" required="false" />
+		</component-public>
+	</component>
+
+	<component description="password标签">
+		<component-type>SWTPassword</component-type>
+		<component-class>org.sweet.frameworks.ui.components.form.textbox.SWTPassword</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="password" required="false" />
+		<attribute name="class" defaultValue="easyui-passwordbox" required="false" />
+		<component-public>
+			<attribute name="label" defaultValue="null" required="false" />
+			<attribute name="endLabel" defaultValue="null" required="false" />
+			<attribute name="title" defaultValue="null" required="false" />
+			<attribute name="value" defaultValue="null" required="false" />
+			<attribute name="readOnly" defaultValue="false" required="false" />
+			<attribute name="required" defaultValue="false" required="false" />
+			<attribute name="emptyText" defaultValue="null" required="false" />
+			<attribute name="align" defaultValue="left" required="false" />
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="colSpan" defaultValue="1" required="false" />
+			<attribute name="handler" defaultValue="null" required="false" />
+		</component-public>
+	</component>
+
+	<component description="search标签">
+		<component-type>SWTSearch</component-type>
+		<component-class>org.sweet.frameworks.ui.components.form.textbox.SWTSearch</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="search" required="false" />
+		<attribute name="class" defaultValue="easyui-textbox" required="false" />
+		<component-public>
+			<attribute name="label" defaultValue="null" required="false" />
+			<attribute name="endLabel" defaultValue="null" required="false" />
+			<attribute name="buttonIcon" defaultValue="textbox-search" required="false" />
+			<attribute name="title" defaultValue="null" required="false" />
+			<attribute name="value" defaultValue="null" required="false" />
+			<attribute name="readOnly" defaultValue="false" required="false" />
+			<attribute name="required" defaultValue="false" required="false" />
+			<attribute name="emptyText" defaultValue="null" required="false" />
+			<attribute name="align" defaultValue="left" required="false" />
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="colSpan" defaultValue="1" required="false" />
+			<attribute name="handler" defaultValue="null" required="false" />
+		</component-public>
+	</component>
+
+	<component description="text标签">
+		<component-type>SWTText</component-type>
+		<component-class>org.sweet.frameworks.ui.components.form.textbox.SWTText</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="text" required="false" />
+		<attribute name="class" defaultValue="easyui-textbox" required="false" />
+		<component-public>
+			<attribute name="label" defaultValue="null" required="false" />
+			<attribute name="endLabel" defaultValue="null" required="false" />
+			<attribute name="title" defaultValue="null" required="false" />
+			<attribute name="value" defaultValue="null" required="false" />
+			<attribute name="readOnly" defaultValue="false" required="false" />
+			<attribute name="required" defaultValue="false" required="false" />
+			<attribute name="emptyText" defaultValue="null" required="false" />
+			<attribute name="align" defaultValue="left" required="false" />
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="colSpan" defaultValue="1" required="false" />
+			<attribute name="handler" defaultValue="null" required="false" />
+		</component-public>
+	</component>
+
+	<component description="textarea标签">
+		<component-type>SWTTextArea</component-type>
+		<component-class>org.sweet.frameworks.ui.components.form.textbox.SWTTextArea</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="textarea" required="false" />
+		<attribute name="class" defaultValue="easyui-textbox" required="false" />
+		<component-public>
+			<attribute name="label" defaultValue="null" required="false" />
+			<attribute name="endLabel" defaultValue="null" required="false" />
+			<attribute name="title" defaultValue="null" required="false" />
+			<attribute name="value" defaultValue="null" required="false" />
+			<attribute name="readOnly" defaultValue="false" required="false" />
+			<attribute name="required" defaultValue="false" required="false" />
+			<attribute name="emptyText" defaultValue="null" required="false" />
+			<attribute name="align" defaultValue="left" required="false" />
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="height" defaultValue="null" required="false" />
+			<attribute name="multiline" defaultValue="true" required="false" />
+			<attribute name="colSpan" defaultValue="1" required="false" />
+			<attribute name="handler" defaultValue="null" required="false" />
+		</component-public>
+	</component>
+
+	<component description="textbutton标签">
+		<component-type>SWTTextButton</component-type>
+		<component-class>org.sweet.frameworks.ui.components.form.textbox.SWTTextButton</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="textbutton" required="false" />
+		<attribute name="class" defaultValue="easyui-textbox" required="false" />
+		<component-public>
+			<attribute name="label" defaultValue="null" required="false" />
+			<attribute name="endLabel" defaultValue="null" required="false" />
+			<attribute name="buttonIcon" defaultValue="textbox-circle" required="false" />
+			<attribute name="title" defaultValue="null" required="false" />
+			<attribute name="value" defaultValue="null" required="false" />
+			<attribute name="readOnly" defaultValue="false" required="false" />
+			<attribute name="required" defaultValue="false" required="false" />
+			<attribute name="emptyText" defaultValue="null" required="false" />
+			<attribute name="align" defaultValue="left" required="false" />
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="colSpan" defaultValue="1" required="false" />
+			<attribute name="handler" defaultValue="null" required="false" />
+		</component-public>
+	</component>
+
+	<component description="startmenu标签,容器组件">
+		<component-type>SWTStartMenu</component-type>
+		<component-class>org.sweet.frameworks.ui.components.menu.start.SWTStartMenu</component-class>
+		<attribute name="id" defaultValue="null" required="true" generator="custom" />
+		<attribute name="xtype" defaultValue="startmenu" required="false" />
+		<attribute name="class" defaultValue="easyui-accordion" required="false" />
+		<component-public>
+			<attribute name="title" defaultValue="null" required="false" />
+			<attribute name="icons" defaultValue="null" required="false" />
+			<attribute name="rootText" defaultValue="null" required="false" />
+			<attribute name="width" defaultValue="null" required="false" />
+			<attribute name="height" defaultValue="null" required="false" />
+			<attribute name="margins" defaultValue="0 0 0 0" required="false" />
+			<attribute name="paddings" defaultValue="0 0 0 0" required="false" />
+			<attribute name="background" defaultValue="#fcffff" required="false" />
+			<attribute name="location" defaultValue="center" required="true" />
+			<attribute name="border" defaultValue="true" required="false" />
+			<attribute name="split" defaultValue="true" required="false" />
+			<attribute name="url" defaultValue="null" required="false" />
+			<attribute name="source" defaultValue="null" required="false" />
+			<attribute name="lines" defaultValue="true" required="false" />
+			<attribute name="sync" defaultValue="true" required="false" />
+			<attribute name="checked" defaultValue="false" required="false" />
+			<attribute name="cascadeChecked" defaultValue="true" required="false" />
+			<attribute name="onlyLeafChecked" defaultValue="false" required="false" />
+			<attribute name="onClick" defaultValue="null" required="false" />
+			<attribute name="onContextMenu" defaultValue="null" required="false" />
+			<attribute name="autoOpen" defaultValue="true" required="false" />
+			<attribute name="collapsed" defaultValue="false" required="false" />
+			<attribute name="minimized" defaultValue="false" required="false" />
+			<attribute name="maximized" defaultValue="false" required="false" />
+			<attribute name="collapsible" defaultValue="false" required="false" />
+			<attribute name="minimizable" defaultValue="false" required="false" />
+			<attribute name="maximizable" defaultValue="false" required="false" />
+			<attribute name="closable" defaultValue="false" required="false" />
+		</component-public>
+	</component>
+</faces-config>
+

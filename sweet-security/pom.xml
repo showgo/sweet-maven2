@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.sweet.frameworks</groupId>
+	<artifactId>sweet-security</artifactId>
+	<version>2.2.0</version>
+
+	<properties>
+		<el.version>2.2.4</el.version>
+		<jstl.version>1.2</jstl.version>
+		<servlet.version>2.4</servlet.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>${el.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.sweet.frameworks</groupId>
+			<artifactId>sweet-foundation</artifactId>
+			<version>${version}</version>
+		</dependency>
+	</dependencies>
+</project>

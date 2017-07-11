@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sweet.frameworks.system.mappings.Codec">
+	<!-- regions -->
+	<select id="queryRegionsAll" parameterType="map" resultType="map">
+		select reg_.* from biz_codec_regions reg_ order by reg_.parent_id asc, reg_.seque asc
+	</select>
+	<insert id="insertRegions" parameterType="map">
+		insert into biz_codec_regions(id, text, parent_id, seque, memo)values(#{id}, #{text}, #{parent_id}, #{seque}, #{memo})
+	</insert>
+	<update id="updateRegions" parameterType="map">
+		update biz_codec_regions set text=#{text}, parent_id=#{parent_id}, seque=#{seque}, memo=#{memo} where id=#{id}
+	</update>
+	<delete id="deleteRegions" parameterType="map">
+		delete from biz_codec_regions where id=#{id}
+	</delete>
+</mapper>
