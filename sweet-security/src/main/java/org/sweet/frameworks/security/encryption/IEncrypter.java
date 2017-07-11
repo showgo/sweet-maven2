@@ -1,4 +1,4 @@
-package org.sweet.frameworks.system.security.encryption;
+package org.sweet.frameworks.security.encryption;
 
 /**
  * @Filename: IEncrypter

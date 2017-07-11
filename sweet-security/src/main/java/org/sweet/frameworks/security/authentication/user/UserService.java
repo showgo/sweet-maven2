@@ -1,8 +1,8 @@
-package org.sweet.frameworks.system.security.authentication.user;
+package org.sweet.frameworks.security.authentication.user;
 
 import java.util.List;
 
-import org.sweet.frameworks.system.security.authentication.user.authority.UserAuthority;
+import org.sweet.frameworks.security.authentication.user.authority.UserAuthority;
 
 /**
  * @Filename: UserService

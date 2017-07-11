@@ -1,7 +1,7 @@
-package org.sweet.frameworks.system.security.authentication.provider;
+package org.sweet.frameworks.security.authentication.provider;
 
-import org.sweet.frameworks.system.security.authentication.Authentication;
-import org.sweet.frameworks.system.security.exception.AuthenticationException;
+import org.sweet.frameworks.security.authentication.Authentication;
+import org.sweet.frameworks.security.exception.AuthenticationException;
 
 /**
  * @Filename: AuthenticationProvider

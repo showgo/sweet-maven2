@@ -1,4 +1,4 @@
-package org.sweet.frameworks.system.security.authentication.user.authority;
+package org.sweet.frameworks.security.authentication.user.authority;
 
 /**
  * @Filename: UserAuthority

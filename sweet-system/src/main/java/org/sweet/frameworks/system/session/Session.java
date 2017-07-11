@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.sweet.frameworks.foundation.util.debug.Debug;
+import org.sweet.frameworks.security.authentication.Authentication;
 import org.sweet.frameworks.system.loader.Config;
-import org.sweet.frameworks.system.security.authentication.Authentication;
 
 /**
  * 系统session(Session)

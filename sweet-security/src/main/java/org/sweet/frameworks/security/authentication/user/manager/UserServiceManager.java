@@ -1,4 +1,4 @@
-package org.sweet.frameworks.system.security.authentication.user.manager;
+package org.sweet.frameworks.security.authentication.user.manager;
 
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -8,10 +8,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.sweet.frameworks.database.dao.service.Service;
-import org.sweet.frameworks.system.security.authentication.user.User;
-import org.sweet.frameworks.system.security.authentication.user.UserImpl;
-import org.sweet.frameworks.system.security.authentication.user.UserService;
-import org.sweet.frameworks.system.security.authentication.user.authority.UserAuthority;
+import org.sweet.frameworks.security.authentication.user.User;
+import org.sweet.frameworks.security.authentication.user.UserImpl;
+import org.sweet.frameworks.security.authentication.user.UserService;
+import org.sweet.frameworks.security.authentication.user.authority.UserAuthority;
 
 /**
  * @Filename: UserServiceManager

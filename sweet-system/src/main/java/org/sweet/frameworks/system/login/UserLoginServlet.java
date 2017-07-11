@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.sweet.frameworks.foundation.annotation.servlet.Servlet;
 import org.sweet.frameworks.foundation.util.json.JSONUtil;
 import org.sweet.frameworks.foundation.util.map.MapUtil;
-import org.sweet.frameworks.system.security.authentication.Authentication;
-import org.sweet.frameworks.system.security.authentication.provider.UserAuthenticationProvider;
-import org.sweet.frameworks.system.security.authentication.user.UserService;
-import org.sweet.frameworks.system.security.authentication.user.manager.UserServiceManager;
-import org.sweet.frameworks.system.security.exception.AuthenticationException;
+import org.sweet.frameworks.security.authentication.Authentication;
+import org.sweet.frameworks.security.authentication.provider.UserAuthenticationProvider;
+import org.sweet.frameworks.security.authentication.user.UserService;
+import org.sweet.frameworks.security.authentication.user.manager.UserServiceManager;
+import org.sweet.frameworks.security.exception.AuthenticationException;
 import org.sweet.frameworks.system.session.Session;
 import org.sweet.frameworks.ui.message.Messages;
 

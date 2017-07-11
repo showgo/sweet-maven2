@@ -1,7 +1,8 @@
-package org.sweet.frameworks.system.security.authentication;
+package org.sweet.frameworks.security.authentication;
 
 import java.util.List;
-import org.sweet.frameworks.system.security.authentication.user.authority.UserAuthority;
+
+import org.sweet.frameworks.security.authentication.user.authority.UserAuthority;
 
 /**
  * @Filename: Authentication

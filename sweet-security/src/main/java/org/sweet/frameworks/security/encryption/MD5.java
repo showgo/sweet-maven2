@@ -1,4 +1,4 @@
-package org.sweet.frameworks.system.security.encryption;
+package org.sweet.frameworks.security.encryption;
 
 /*
  * A java implementation of the RSA Data Security, Inc. MD5 Message Digest Algorithm, as defined in RFC 1321. Based on the
