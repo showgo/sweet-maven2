@@ -71,7 +71,7 @@ public final class StartMenuServlet extends HttpServlet {
 			}
 			ITreeDataSource source=new StartMenuDataSource(request);
 			source.setModel(new TreeModel(model));
-			out.println(JSONUtil.fromObject(source.getData("org.sweet.frameworks.system.mappings.Function.queryAll",param)));
+			out.println(JSONUtil.fromObject(source.getData("org.sweet.frameworks.security.mappings.Function.queryAll",param)));
 		}catch(Exception e){
 			out.println("{}");
 			e.printStackTrace();
