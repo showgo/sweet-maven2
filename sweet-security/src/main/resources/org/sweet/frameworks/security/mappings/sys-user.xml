@@ -5,6 +5,6 @@
 		select u.* from sys_user u where u.account=#{account} and u.is_enabled='Y'
 	</select>
 	<insert id="insertUser" parameterType="map">
-		insert into sys_user(account, user_name, password, is_valid, created_user_id, created_user, version)values(#{userId}, #{userId}, #{password}, 'Y', #{userId}, #{userId}, 1)
+		insert into sys_user(user_id, account, password, is_account_expired, is_password_expired, is_locked, is_enabled, created_user_id, created_user, created_date, created_ip)values(#{id}, #{account}, #{password}, 'N', 'N', 'N', 'Y', #{created_user_id}, #{created_user_id}, #{created_date}, #{created_ip})
 	</insert>
 </mapper>
