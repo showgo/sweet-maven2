@@ -50,7 +50,7 @@ public class UserServiceManager extends Service implements UserService {
 		try{
 			Map<String,Object> param=new HashMap<String,Object>();
 			param.put("account",account);
-			Map<String,Object> map=this.queryMap("org.sweet.frameworks.system.mappings.User.queryUser",param);
+			Map<String,Object> map=this.queryMap("org.sweet.frameworks.security.mappings.User.queryUser",param);
 			if(null!=map&&map.size()>0){
 				/* 用户信息 */
 				UserBuilder builder=UserBuilder.withAccount(account);

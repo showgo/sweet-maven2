@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.sweet.frameworks.system.mappings.Function">
+<mapper namespace="org.sweet.frameworks.security.mappings.Function">
 	<select id="queryAll" parameterType="map" resultType="map">
 		select func_.* from sv_sys_function func_ where func_.is_enabled='Y' union all select turr_.* from sv_sys_tutorial_function turr_ where turr_.is_enabled='Y' order by parent_id asc, seque asc
 	</select>
