@@ -12,15 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.sweet.frameworks.foundation.annotation.servlet.Servlet;
+import org.sweet.frameworks.foundation.message.Messages;
 import org.sweet.frameworks.foundation.util.json.JSONUtil;
 import org.sweet.frameworks.foundation.util.map.MapUtil;
 import org.sweet.frameworks.security.authentication.Authentication;
 import org.sweet.frameworks.security.authentication.provider.UserAuthenticationProvider;
 import org.sweet.frameworks.security.authentication.user.UserService;
 import org.sweet.frameworks.security.authentication.user.manager.UserServiceManager;
-import org.sweet.frameworks.security.exception.AuthenticationException;
 import org.sweet.frameworks.system.session.Session;
-import org.sweet.frameworks.ui.message.Messages;
 
 /**
  * 用户登录UserLoginServlet
@@ -67,17 +66,17 @@ public final class UserLoginServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		UserService service=new UserServiceManager();
 		UserAuthenticationProvider provider=new UserAuthenticationProvider(service);
-		Authentication auth=null;
 		try{
-			auth=provider.authenticate(data.get("account").toString(),data.get("password").toString());
+			Authentication auth=provider.authenticate(data.get("account").toString(),data.get("password").toString());
 			if(auth.isAuthenticated()){
 				Session session=Session.create(request,auth);
 				response.sendRedirect(request.getContextPath()+"/main.xhtml?sessionId="+session.getId());
+			}else{
+				/* _swtui_page_messages_:用于返回登录信息的特殊参数 */
+				response.sendRedirect(request.getContextPath()+"/index.xhtml?_swtui_page_messages_="+Messages.RETCODE+",-1,"+Messages.RETMESG+","+String.valueOf(auth.getAuthenticationMessage())+"&sessionId=-1");
 			}
-		}catch(AuthenticationException e){
+		}catch(Exception e){
 			e.printStackTrace();
-			/* _swtui_page_messages_:用于返回登录信息的特殊参数 */
-			response.sendRedirect(request.getContextPath()+"/index.xhtml?_swtui_page_messages_="+Messages.RETCODE+",-1,"+Messages.RETMESG+","+String.valueOf(null!=auth ? auth.getAuthenticationMessage() : "")+"&sessionId=-1");
 		}
 	}
 

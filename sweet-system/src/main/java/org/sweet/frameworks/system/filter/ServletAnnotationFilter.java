@@ -3,8 +3,6 @@ package org.sweet.frameworks.system.filter;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.Filter;
@@ -18,10 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.sweet.frameworks.foundation.annotation.servlet.Servlet;
-import org.sweet.frameworks.foundation.resource.ClassResources;
 import org.sweet.frameworks.foundation.resource.ResourcePathUtil;
 import org.sweet.frameworks.foundation.util.debug.Debug;
-import org.sweet.frameworks.system.loader.ServletResourceLoader;
 import org.sweet.frameworks.system.session.Session;
 import org.sweet.frameworks.system.session.SessionException;
 
@@ -42,22 +38,6 @@ public class ServletAnnotationFilter implements Filter {
 	 */
 	public void init(FilterConfig filterConfig) throws ServletException{
 		this.servletContext=filterConfig.getServletContext();
-		Map<String,Class<?>> classMap=new HashMap<String,Class<?>>();
-		List<String> setClasses=ServletResourceLoader.getServletClasses(this.servletContext);
-		StringBuilder buffer=new StringBuilder();
-		for(String clazz:setClasses){
-			Class<?> cls=ClassResources.getResourceAsClass(null,clazz);
-			Servlet annotationInstance=cls.getAnnotation(Servlet.class);
-			String annotationAttrValue=annotationInstance.name();
-			if(!"".equals(annotationAttrValue)){
-				classMap.put(annotationAttrValue,cls);
-				buffer.append(cls.getName());
-				buffer.append(", ");
-			}
-		}
-		this.servletContext.setAttribute("servletClassMap",classMap);
-		Debug.info(ServletAnnotationFilter.class,"Servlet(s): ["+buffer.substring(0,buffer.lastIndexOf(","))+"] ");
-		Debug.info(ServletAnnotationFilter.class,"[Load servlet(s) completed]");
 	}
 
 	/**

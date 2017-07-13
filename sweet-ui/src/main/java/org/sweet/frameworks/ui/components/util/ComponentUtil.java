@@ -8,10 +8,10 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.sweet.frameworks.foundation.message.Messages;
 import org.sweet.frameworks.foundation.util.map.MapUtil;
 import org.sweet.frameworks.ui.components.Component;
 import org.sweet.frameworks.ui.components.UIComponentsReader;
-import org.sweet.frameworks.ui.message.Messages;
 
 /**
  * ComponentUtil

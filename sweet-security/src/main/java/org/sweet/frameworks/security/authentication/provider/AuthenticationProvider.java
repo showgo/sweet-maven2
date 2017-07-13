@@ -1,7 +1,6 @@
 package org.sweet.frameworks.security.authentication.provider;
 
 import org.sweet.frameworks.security.authentication.Authentication;
-import org.sweet.frameworks.security.exception.AuthenticationException;
 
 /**
  * @Filename: AuthenticationProvider
@@ -14,10 +13,9 @@ import org.sweet.frameworks.security.exception.AuthenticationException;
 public interface AuthenticationProvider {
 	/**
 	 * 身份鉴定
-	 * @param account 账号
-	 * @param password 密码
+	 * @param account
+	 * @param password
 	 * @return
-	 * @throws AuthenticationException
 	 */
-	Authentication authenticate(String account,String password) throws AuthenticationException;
+	Authentication authenticate(String account,String password);
 }

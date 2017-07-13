@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.sweet.frameworks.database.dao.service.Service;
 import org.sweet.frameworks.foundation.annotation.servlet.Servlet;
+import org.sweet.frameworks.foundation.message.Messages;
 import org.sweet.frameworks.foundation.util.json.JSONUtil;
 import org.sweet.frameworks.foundation.util.map.MapUtil;
 import org.sweet.frameworks.system.generator.GeneratorFactory;
-import org.sweet.frameworks.ui.message.Messages;
 import org.sweet.frameworks.ui.resources.URLParameter;
 
 /**

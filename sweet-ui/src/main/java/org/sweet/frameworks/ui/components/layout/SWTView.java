@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
+import org.sweet.frameworks.foundation.message.Messages;
 import org.sweet.frameworks.foundation.util.map.MapUtil;
 import org.sweet.frameworks.ui.components.Component;
 import org.sweet.frameworks.ui.components.abstraction.SWTContainer;
@@ -13,7 +14,6 @@ import org.sweet.frameworks.ui.components.resources.PageResourceResolver;
 import org.sweet.frameworks.ui.components.util.ComponentUtil;
 import org.sweet.frameworks.ui.components.util.DocumentUtil;
 import org.sweet.frameworks.ui.exception.RequiredAttributeException;
-import org.sweet.frameworks.ui.message.Messages;
 
 /**
  * 页面布局类SWTView

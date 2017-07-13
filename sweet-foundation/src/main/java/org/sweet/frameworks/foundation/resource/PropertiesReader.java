@@ -1,12 +1,13 @@
 package org.sweet.frameworks.foundation.resource;
 
-import java.util.Locale;
+import java.io.InputStream;
 import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.io.IOUtils;
 import org.sweet.frameworks.foundation.util.string.StringUtil;
 
 /**
@@ -21,16 +22,27 @@ import org.sweet.frameworks.foundation.util.string.StringUtil;
 public class PropertiesReader {
 	protected static final String BINDING_PARAMS_REGEX="\\{\\d\\}";
 	protected static final Pattern BINDING_PATTERN=Pattern.compile(BINDING_PARAMS_REGEX);
-	protected static Map<String,Object> resourceBundles=new ConcurrentHashMap<String,Object>();
+	protected static Map<String,Object> propertiesMap=new ConcurrentHashMap<String,Object>();
 
 	/**
 	 * 加载配置文件
 	 * @param configurationFile 配置文件
 	 */
 	protected static void loadProperties(String configurationFile){
-		ResourceBundle resourceBundle=ResourceBundle.getBundle(configurationFile,new Locale("zh","CN"));
-		for(String key:resourceBundle.keySet()){
-			resourceBundles.put(key,resourceBundle.getObject(key));
+		ClassLoader loader=Thread.currentThread().getContextClassLoader();
+		InputStream is=loader.getResourceAsStream(configurationFile);
+		try{
+			if(null!=is){
+				Properties properties=new Properties();
+				properties.load(is);
+				for(Map.Entry<Object,Object> entry:properties.entrySet()){
+					propertiesMap.put(entry.getKey().toString(),entry.getValue());
+				}
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}finally{
+			IOUtils.closeQuietly(is);
 		}
 	}
 
@@ -40,8 +52,8 @@ public class PropertiesReader {
 	 * @return 配置值
 	 */
 	private static Object get(String key){
-		if(resourceBundles.containsKey(key)){
-			return resourceBundles.get(key);
+		if(propertiesMap.containsKey(key)){
+			return propertiesMap.get(key);
 		}
 		return null;
 	}

@@ -3,11 +3,11 @@
 <mapper namespace="org.sweet.frameworks.security.mappings.User">
 	<select id="queryUser" parameterType="map" resultType="map">
 		select u.* from sys_user u where u.is_enabled='Y'
-		<if test=" id!=null and id!='' " >
-		  u.user_id = #{id}
+		<if test="(id!=null and id!='')" >
+		  and u.user_id = #{id}
 		</if>
-		<if test=" account!=null and account!='' " >
-		  u.account = #{account}
+		<if test="(account!=null and account!='')" >
+		  and u.account = #{account}
 		</if>
 	</select>
 	<insert id="insertUser" parameterType="map">

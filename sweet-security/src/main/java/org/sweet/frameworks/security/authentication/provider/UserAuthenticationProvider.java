@@ -25,7 +25,7 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
 		this.userService=userService;
 	}
 
-	public Authentication authenticate(String account,String password) throws AuthenticationException{
+	public Authentication authenticate(String account,String password){
 		UserPasswordAuthentication auth=new UserPasswordAuthentication();
 		User user=userService.queryUserByAccount(account);
 		try{
@@ -59,7 +59,6 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
 			/* 验证未通过 */
 			auth.setAuthenticated(false);
 			auth.setAuthenticationMessage(ex.getMessage());
-			throw ex;
 		}
 		return auth;
 	}
