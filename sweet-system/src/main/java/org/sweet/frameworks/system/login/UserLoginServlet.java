@@ -2,6 +2,7 @@ package org.sweet.frameworks.system.login;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -64,7 +65,7 @@ public final class UserLoginServlet extends HttpServlet {
 	private void doLogin(HttpServletRequest request,HttpServletResponse response,Map<String,Object> data) throws IOException,SQLException{
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
-		UserService service=new UserServiceManager(request);
+		UserService service=new UserServiceManager();
 		UserAuthenticationProvider provider=new UserAuthenticationProvider(service);
 		try{
 			Authentication auth=provider.authenticate(data.get("account").toString(),data.get("password").toString());
@@ -111,9 +112,15 @@ public final class UserLoginServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		ServletOutputStream out=response.getOutputStream();
 		UserService service=new UserServiceManager(request);
-		// FIXME:
-		service.createUser(null);
-		out.println(JSONUtil.fromObject(null));
+		Map<String,Object> map=new HashMap<String,Object>();
+		if(service.createUser(data.get("account").toString(),data.get("password").toString())>0){
+			map.put(Messages.RETCODE,"1");
+			map.put(Messages.RETMESG,"Congratulations, user registration success.");
+		}else{
+			map.put(Messages.RETCODE,"0");
+			map.put(Messages.RETMESG,"Registration failed: user already exists.");
+		}
+		out.println(JSONUtil.fromObject(map));
 		out.flush();
 		out.close();
 	}

@@ -16,7 +16,7 @@ public interface UserService {
 	/**
 	 * Create a new user with the supplied details.
 	 */
-	int createUser(User user);
+	int createUser(String account,String password);
 
 	/**
 	 * Update the specified user.
@@ -25,23 +25,30 @@ public interface UserService {
 
 	/**
 	 * update current user's password with newPassword
-	 * @param user
+	 * @param id
 	 * @param newPassword
 	 */
-	int updateUserPassword(User user,String newPassword);
+	int updateUserPassword(String id,String newPassword);
 
 	/**
 	 * Remove the user with the given login name from the system.
 	 */
-	int deleteUser(String account);
+	int deleteUser(String id);
 
 	/**
 	 * Check if a user with the supplied login name exists in the system.
 	 */
-	boolean userExists(String account);
+	boolean userExists(String id);
 
 	/**
-	 * 根据账号查看用户
+	 * 根据id查找用户
+	 * @param id
+	 * @return
+	 */
+	User queryUserById(String id);
+
+	/**
+	 * 根据账号查找用户
 	 * @param account
 	 * @return
 	 */
@@ -55,8 +62,8 @@ public interface UserService {
 
 	/**
 	 * 返回用户权限
-	 * @param account
+	 * @param id 用户id
 	 * @return
 	 */
-	List<UserAuthority> queryUserAuthorities(String account);
+	List<UserAuthority> queryUserAuthorities(String id);
 }

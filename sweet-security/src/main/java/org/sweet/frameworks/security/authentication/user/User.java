@@ -14,7 +14,7 @@ import org.sweet.frameworks.security.authentication.user.authority.UserAuthority
  * @ModifyRecords:
  */
 public interface User extends Serializable {
-	public static final String ID="user_id";
+	public static final String ID="id";
 	public static final String ACCOUNT="account";
 	public static final String PASSWORD="password";
 	public static final String IS_ACCOUNT_EXPIRED="is_account_expired";

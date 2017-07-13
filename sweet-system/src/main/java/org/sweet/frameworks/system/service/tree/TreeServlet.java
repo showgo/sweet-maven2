@@ -73,7 +73,7 @@ public final class TreeServlet extends HttpServlet {
 			if(data.containsKey(URLParameter.MODEL_LIT_)){
 				model.putAll(MapUtil.getParamsMap(data.get(URLParameter.MODEL_LIT_).toString()));
 			}
-			ITreeDataSource source=new TreeDataSource(request);
+			ITreeDataSource source=new TreeDataSource();
 			source.setModel(new TreeModel(model));
 			out.println(JSONUtil.fromObject(source.getData(id,param)));
 		}catch(Exception e){

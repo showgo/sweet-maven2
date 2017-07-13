@@ -69,7 +69,7 @@ public final class StartMenuServlet extends HttpServlet {
 			if(data.containsKey(URLParameter.MODEL_LIT_)){
 				model.putAll(MapUtil.getParamsMap(data.get(URLParameter.MODEL_LIT_).toString()));
 			}
-			ITreeDataSource source=new StartMenuDataSource(request);
+			ITreeDataSource source=new StartMenuDataSource();
 			source.setModel(new TreeModel(model));
 			out.println(JSONUtil.fromObject(source.getData("org.sweet.frameworks.security.mappings.Function.queryAll",param)));
 		}catch(Exception e){

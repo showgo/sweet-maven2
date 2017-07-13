@@ -56,9 +56,9 @@ public final class ResourcePathUtil {
 		if(path.length()==0&&!pathChild.startsWith("/")){
 			return pathChild;
 		}
-		// if(!path.endsWith("/")){
-		// path=path+"/";
-		// }
+		if(!path.endsWith("/")){
+			path=path+"/";
+		}
 		if(pathChild.startsWith(path)){
 			return pathChild.substring(path.length());
 		}

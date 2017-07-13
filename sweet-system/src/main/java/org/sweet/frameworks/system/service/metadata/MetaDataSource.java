@@ -13,8 +13,10 @@ import org.sweet.frameworks.system.service.datasource.IDataSource;
 import org.sweet.frameworks.system.service.grid.pagination.Pagination;
 
 public class MetaDataSource extends ServiceForMetaData implements IDataSource {
+	private HttpServletRequest request;
+
 	public MetaDataSource(HttpServletRequest request){
-		super(request);
+		this.request=request;
 	}
 
 	public Object getData(String id,Map<String,Object> parameter) throws SQLException{
@@ -23,14 +25,14 @@ public class MetaDataSource extends ServiceForMetaData implements IDataSource {
 		String table=null!=data.get("table_name") ? data.get("table_name").toString() : null;
 		String type=null!=data.get("type") ? data.get("type").toString() : null;
 		List<Map<String,Object>> list=null;
-		if("table".equals(type)) {
+		if("table".equals(type)){
 			list=this.getTable(schema,table);
-		}else if("view".equals(type)) {
+		}else if("view".equals(type)){
 			list=this.getView(schema,table);
-		}else if("column".equals(type)) {
+		}else if("column".equals(type)){
 			list=this.getColumns(schema,table);
 		}
-		if(null!=list) {
+		if(null!=list){
 			int pageNumb=Integer.valueOf(parameter.get(Pagination.PAGE_NUMB).toString()).intValue();
 			int pageSize=Integer.valueOf(parameter.get(Pagination.PAGE_SIZE).toString()).intValue();
 			int fromIndex=(pageNumb-1)*pageSize;

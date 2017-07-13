@@ -138,7 +138,11 @@ public class ServletAnnotationFilter implements Filter {
 	 * @return
 	 */
 	public String getURI(HttpServletRequest request){
-		return ResourcePathUtil.getRelativePath(request.getContextPath(),request.getRequestURI());
+		String uri=ResourcePathUtil.getRelativePath(request.getContextPath(),request.getRequestURI());
+		if(!uri.startsWith("/")){
+			return "/"+uri;
+		}
+		return uri;
 	}
 
 	/**

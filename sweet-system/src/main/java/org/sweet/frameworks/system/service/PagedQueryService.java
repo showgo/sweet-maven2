@@ -23,11 +23,9 @@ import com.github.pagehelper.PageHelper;
  * @ModifyRecords:
  */
 public class PagedQueryService {
-	protected DAO dao=DAOFactory.getDAO();
-	protected HttpServletRequest request=null;
+	private DAO dao=DAOFactory.getDAO();
 
 	public PagedQueryService(HttpServletRequest request){
-		this.request=request;
 	}
 
 	/**

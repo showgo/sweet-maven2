@@ -3,17 +3,12 @@ package org.sweet.frameworks.system.service.startmenu;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
 
 import org.sweet.frameworks.system.service.datasource.ITreeDataSource;
 import org.sweet.frameworks.system.service.tree.TreeDataSource;
 import org.sweet.frameworks.ui.components.panel.tree.TreeModel;
 
 public class StartMenuDataSource extends TreeDataSource implements ITreeDataSource {
-	public StartMenuDataSource(HttpServletRequest request){
-		super(request);
-	}
-
 	public Object getData(String id,Map<String,Object> parameter) throws SQLException{
 		List<Map<String,Object>> list=this.query(id,parameter);
 		if(null!=list){

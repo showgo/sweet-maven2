@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- settings -->
+	<settings>
+		<setting name="logImpl" value="LOG4J" />
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<setting name="lazyLoadingEnabled" value="true" />
+	</settings>
+	<!-- typeAliases -->
+	<typeAliases />
+	<!-- plugins -->
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<property name="offsetAsPageNum" value="false" />
+			<property name="rowBoundsWithCount" value="false" />
+			<property name="pageSizeZero" value="true" />
+			<property name="reasonable" value="true" />
+			<property name="supportMethodsArguments" value="true" />
+			<property name="returnPageInfo" value="true" />
+		</plugin>
+	</plugins>
+	<!-- environments -->
+	<environments default="mysql">
+		<environment id="mysql">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://localhost:3306/sweet?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8" />
+				<property name="username" value="root" />
+				<property name="password" value="sysadmin" />
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- mappers -->
+	<mappers>
+		<mapper resource="org/sweet/frameworks/security/mappings/sys-codec.xml" />
+		<mapper resource="org/sweet/frameworks/security/mappings/sys-function.xml" />
+		<mapper resource="org/sweet/frameworks/security/mappings/sys-system.xml" />
+		<mapper resource="org/sweet/frameworks/security/mappings/sys-user.xml" />
+	</mappers>
+</configuration>

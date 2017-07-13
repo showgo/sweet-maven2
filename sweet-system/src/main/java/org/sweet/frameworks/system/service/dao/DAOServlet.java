@@ -44,7 +44,7 @@ public final class DAOServlet extends HttpServlet {
 			Map<String,Object> data=MapUtil.getParameterMap(request);
 			Map<String,Object> generatorMap=MapUtil.getParamsMap(data.get(URLParameter.GENERATOR_).toString());
 			GeneratorFactory.generate(data,generatorMap);
-			Service service=new Service(request);
+			Service service=new Service();
 			int res=0;
 			if(Boolean.parseBoolean(data.get(URLParameter.COMPILED_).toString())){
 				res=service.execute(data.get(URLParameter.SQLID_LIT_).toString(),data);

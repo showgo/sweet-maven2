@@ -52,7 +52,7 @@ public final class ComboServlet extends HttpServlet {
 				model.putAll(MapUtil.getParamsMap(data.get(URLParameter.MODEL_).toString()));
 			}
 			/* 获取数据 */
-			Service service=new Service(request);
+			Service service=new Service();
 			List<Map<String,Object>> list=service.query(id,data);
 			for(Map<String,Object> map:list){
 				map.put("id",map.get(model.get("id")));

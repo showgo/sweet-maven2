@@ -4,8 +4,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.sweet.frameworks.database.dao.DAO;
 import org.sweet.frameworks.database.dao.DAOFactory;
 import org.sweet.frameworks.database.sql.SQL;
@@ -20,15 +18,12 @@ import org.sweet.frameworks.database.sql.SQL;
  * @modifyrecords:
  */
 public class Service {
-	protected DAO dao=DAOFactory.getDAO();
-	protected HttpServletRequest request=null;
+	private DAO dao=DAOFactory.getDAO();
 
 	/**
 	 * 构造函数
-	 * @param request
 	 */
-	public Service(HttpServletRequest request){
-		this.request=request;
+	public Service(){
 	}
 
 	/**

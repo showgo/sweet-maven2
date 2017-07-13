@@ -11,8 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
+import org.sweet.frameworks.database.dao.DAO;
+import org.sweet.frameworks.database.dao.DAOFactory;
 import org.sweet.frameworks.database.sql.SQLHelper;
 
 /**
@@ -28,9 +28,10 @@ import org.sweet.frameworks.database.sql.SQLHelper;
  * @version:1.0.0
  * @date:wugz/2017年3月21日
  */
-public class ServiceForMetaData extends Service {
-	public ServiceForMetaData(HttpServletRequest request){
-		super(request);
+public class ServiceForMetaData {
+	private DAO dao=DAOFactory.getDAO();
+
+	public ServiceForMetaData(){
 	}
 
 	private List<Map<String,Object>> getObjects(String schema,String tableName,String types) throws SQLException{
