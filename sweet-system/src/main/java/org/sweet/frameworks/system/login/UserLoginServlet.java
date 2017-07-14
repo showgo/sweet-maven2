@@ -1,12 +1,12 @@
 package org.sweet.frameworks.system.login;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -107,7 +107,7 @@ public final class UserLoginServlet extends HttpServlet {
 	private void doRegist(HttpServletRequest request,HttpServletResponse response,Map<String,Object> data) throws IOException,SQLException{
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
-		ServletOutputStream out=response.getOutputStream();
+		PrintWriter out=response.getWriter();
 		UserService service=new UserServiceManager(request);
 		Map<String,Object> map=new HashMap<String,Object>();
 		if(service.createUser(data.get("account").toString(),data.get("password").toString())>0){

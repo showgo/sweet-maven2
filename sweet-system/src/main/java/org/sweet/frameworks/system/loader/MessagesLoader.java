@@ -43,15 +43,13 @@ public class MessagesLoader extends PropertiesReader {
 					return false;
 				}
 			});
-			walker.walks(servletContext.getRealPath("/META-INF/"),results);
 			walker.walks(servletContext.getRealPath("/WEB-INF/META-INF/"),results);
 			walker.walks(servletContext.getRealPath("/WEB-INF/lib/"),results);
 		}catch(IOException e){
 			e.printStackTrace();
 		}
 		for(String resource:results){
-			String configurationFile=resource.substring(0,resource.indexOf(".properties"));
-			loadProperties(configurationFile);
+			loadProperties(resource);
 		}
 		Debug.info(MessagesLoader.class,"[Load property(s) configuration(s) completed]");
 	}
