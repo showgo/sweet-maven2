@@ -8,9 +8,13 @@ import javax.servlet.ServletContext;
 
 import org.apache.commons.io.FilenameUtils;
 import org.sweet.frameworks.foundation.annotation.servlet.Servlet;
-import org.sweet.frameworks.foundation.resource.ClassResources;
+import org.sweet.frameworks.foundation.resource.ServletClassResources;
 import org.sweet.frameworks.foundation.resource.ResourcesFilter;
 import org.sweet.frameworks.foundation.resource.ResourcesWalker;
+
+import javassist.ClassPool;
+import javassist.CtClass;
+import javassist.NotFoundException;
 
 /**
  * servlet资源类加载
@@ -23,7 +27,6 @@ import org.sweet.frameworks.foundation.resource.ResourcesWalker;
  */
 public final class ServletResourceLoader {
 	private static ServletResourceLoader loader=null;
-
 	static{
 		loader=new ServletResourceLoader();
 	}
@@ -35,14 +38,20 @@ public final class ServletResourceLoader {
 	protected List<String> listClasses(ServletContext servletContext){
 		List<String> results=new ArrayList<String>();
 		try{
+			final ClassPool pool=ClassPool.getDefault();
+			pool.appendSystemPath();
+			List<String> paths=ServletClassResources.getCustomClasspath(servletContext);
+			for(String path:paths){
+				pool.appendClassPath(path);
+			}
 			ResourcesWalker walker=new ResourcesWalker(new ResourcesFilter() {
 				public boolean accept(String path,String resource){
 					try{
-						if(resource.endsWith(".jar")) {
+						if(resource.endsWith(".jar")){
 							return FilenameUtils.getName(resource).contains("sweet");
-						}else if(resource.endsWith(".class")) {
-							Class<?> clazz=ClassResources.getResourceAsClass(path,resource);
-							if(null!=clazz&&clazz.isAnnotationPresent(Servlet.class)) {
+						}else if(resource.endsWith(".class")){
+							CtClass clazz=ServletClassResources.getResourceAsClass(pool,path,resource);
+							if(null!=clazz&&null!=clazz.getAnnotation(Servlet.class)){
 								return true;
 							}
 						}
@@ -54,6 +63,8 @@ public final class ServletResourceLoader {
 			walker.walks(servletContext.getRealPath("/WEB-INF/lib/"),results);
 			walker.walks(servletContext.getRealPath("/WEB-INF/classes/"),results);
 		}catch(IOException e){
+			e.printStackTrace();
+		}catch(NotFoundException e){
 			e.printStackTrace();
 		}
 		return results;

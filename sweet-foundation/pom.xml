@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.sweet.frameworks</groupId>
 	<artifactId>sweet-foundation</artifactId>
@@ -10,6 +11,7 @@
 		<servlet.version>2.4</servlet.version>
 		<commons.io.version>2.4</commons.io.version>
 		<mybatis.version>3.4.2</mybatis.version>
+		<javassist.version>3.20.0-GA</javassist.version>
 		<jackson.version>1.9.13</jackson.version>
 		<dom4j.version>1.6.1</dom4j.version>
 		<log4j.version>1.2.17</log4j.version>
@@ -42,6 +44,11 @@
 			<artifactId>servlet-api</artifactId>
 			<version>${servlet.version}</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>${javassist.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>

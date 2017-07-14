@@ -10,7 +10,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.http.HttpServlet;
 
 import org.sweet.frameworks.foundation.annotation.servlet.Servlet;
-import org.sweet.frameworks.foundation.resource.ClassResources;
+import org.sweet.frameworks.foundation.resource.ServletClassResources;
 import org.sweet.frameworks.foundation.util.debug.Debug;
 import org.sweet.frameworks.system.loader.DatabaseConfigLoader;
 import org.sweet.frameworks.system.loader.MessagesLoader;
@@ -63,7 +63,7 @@ public final class SystemConfigListener extends HttpServlet implements ServletCo
 		List<String> setClasses=ServletResourceLoader.getServletClasses(servletContext);
 		StringBuilder buffer=new StringBuilder();
 		for(String clazz:setClasses){
-			Class<?> cls=ClassResources.getResourceAsClass(null,clazz);
+			Class<?> cls=ServletClassResources.getResourceAsClass(clazz);
 			Servlet annotationInstance=cls.getAnnotation(Servlet.class);
 			String annotationAttrValue=annotationInstance.name();
 			if(!"".equals(annotationAttrValue)){
