@@ -8,7 +8,6 @@ import javax.servlet.ServletContext;
 
 import org.apache.commons.io.FilenameUtils;
 import org.sweet.frameworks.foundation.annotation.servlet.Servlet;
-import org.sweet.frameworks.foundation.resource.ServletClassResources;
 import org.sweet.frameworks.foundation.resource.ResourcesFilter;
 import org.sweet.frameworks.foundation.resource.ResourcesWalker;
 
@@ -39,7 +38,6 @@ public final class ServletResourceLoader {
 		List<String> results=new ArrayList<String>();
 		try{
 			final ClassPool pool=ClassPool.getDefault();
-			pool.appendSystemPath();
 			List<String> paths=ServletClassResources.getCustomClasspath(servletContext);
 			for(String path:paths){
 				pool.appendClassPath(path);
@@ -48,7 +46,7 @@ public final class ServletResourceLoader {
 				public boolean accept(String path,String resource){
 					try{
 						if(resource.endsWith(".jar")){
-							return FilenameUtils.getName(resource).contains("sweet");
+							return FilenameUtils.getName(resource).contains(ServletClassResources.getDefaultContext());
 						}else if(resource.endsWith(".class")){
 							CtClass clazz=ServletClassResources.getResourceAsClass(pool,path,resource);
 							if(null!=clazz&&null!=clazz.getAnnotation(Servlet.class)){

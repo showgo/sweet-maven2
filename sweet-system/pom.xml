@@ -38,17 +38,17 @@
 		<dependency>
 			<groupId>org.sweet.frameworks</groupId>
 			<artifactId>sweet-foundation</artifactId>
-			<version>${version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.sweet.frameworks</groupId>
 			<artifactId>sweet-security</artifactId>
-			<version>${version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.sweet.frameworks</groupId>
 			<artifactId>sweet-ui</artifactId>
-			<version>${version}</version>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 	<build>

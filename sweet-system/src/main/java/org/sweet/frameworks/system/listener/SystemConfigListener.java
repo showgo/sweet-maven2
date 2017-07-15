@@ -10,10 +10,10 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.http.HttpServlet;
 
 import org.sweet.frameworks.foundation.annotation.servlet.Servlet;
-import org.sweet.frameworks.foundation.resource.ServletClassResources;
 import org.sweet.frameworks.foundation.util.debug.Debug;
 import org.sweet.frameworks.system.loader.DatabaseConfigLoader;
 import org.sweet.frameworks.system.loader.MessagesLoader;
+import org.sweet.frameworks.system.loader.ServletClassResources;
 import org.sweet.frameworks.system.loader.ServletResourceLoader;
 import org.sweet.frameworks.system.loader.SystemConfigLoader;
 import org.sweet.frameworks.ui.components.UIComponentsLoader;
