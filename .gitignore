@@ -1,1 +1,11 @@
 /target/
+sweet-maven/
+sweet-foundation/.classpath
+sweet-foundation/.classpath
+sweet-security/.classpath
+sweet-security/.settings/org.eclipse.wst.validation.prefs
+sweet-ui/.classpath
+sweet-widget/.classpath
+sweet-widget/.settings/org.eclipse.jdt.core.prefs
+*.prefs
+sweet-security/.classpath
