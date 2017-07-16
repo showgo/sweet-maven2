@@ -9,3 +9,4 @@ sweet-widget/.classpath
 sweet-widget/.settings/org.eclipse.jdt.core.prefs
 *.prefs
 sweet-security/.classpath
+sweet-maven
