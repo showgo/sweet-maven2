@@ -131,9 +131,4 @@ public class Installer extends DirectoryWalker<Map<String,Object>> {
 		}
 		commander.run();
 	}
-
-	public static void main(String[] args) throws Exception{
-		Installer installer=new Installer("D:\\temporaries\\gexin");
-		installer.install();
-	}
 }
