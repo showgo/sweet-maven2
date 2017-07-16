@@ -30,22 +30,30 @@ public final class ResourcesWalker extends DirectoryWalker<String> {
 	 */
 	protected void handleFile(File file,int depth,Collection<String> results){
 		String path=file.getAbsolutePath();
-		if(null!=this.filter&&this.filter.accept(this.start,path)) {
-			if(path.endsWith(".jar")) {
+		if(null!=this.filter&&this.filter.accept(this.start,path)){
+			if(path.endsWith(".jar")){
+				JarFile jarFile=null;
 				try{
-					JarFile jarFile=new JarFile(file);
+					jarFile=new JarFile(file);
 					Enumeration<JarEntry> entrys=jarFile.entries();
 					while(entrys.hasMoreElements()){
 						JarEntry jarEntry=entrys.nextElement();
 						String entryName=jarEntry.getName();
 						/* 从jar包中获取满足条件的资源 */
-						if(null!=this.filter&&this.filter.accept(null,entryName)) {
+						if(null!=this.filter&&this.filter.accept(null,entryName)){
 							results.add(entryName);
 						}
 					}
-					jarFile.close();
 				}catch(IOException ex){
 					ex.printStackTrace();
+				}finally{
+					if(null!=jarFile){
+						try{
+							jarFile.close();
+						}catch(IOException e){
+							e.printStackTrace();
+						}
+					}
 				}
 			}else{
 				String rel=ResourcePathUtil.getRelativePath(this.start,path);
