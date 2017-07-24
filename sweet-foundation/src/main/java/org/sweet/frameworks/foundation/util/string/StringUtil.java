@@ -1,5 +1,7 @@
 package org.sweet.frameworks.foundation.util.string;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.UUID;
 
 /**
@@ -12,6 +14,31 @@ import java.util.UUID;
  * @modifyrecords:
  */
 public final class StringUtil {
+	/**
+	 * 生成uuid
+	 * @return
+	 */
+	public static String uuid(){
+		UUID uuid=UUID.randomUUID();
+		return uuid.toString().replaceAll("-","").replaceAll("_","");
+	}
+
+	/**
+	 * 返回单引号字符
+	 * @return
+	 */
+	public static String getSingleQuoteToken(){
+		return "'";
+	}
+
+	/**
+	 * 返回双引号字符
+	 * @return
+	 */
+	public static String getDoubleQuoteToken(){
+		return "\"";
+	}
+
 	/**
 	 * 判断字符串是否为空
 	 * @param string
@@ -36,13 +63,13 @@ public final class StringUtil {
 	 * @return
 	 */
 	public static String prettyString(String string){
-		if(null!=string) {
+		if(null!=string){
 			StringBuilder buffer=new StringBuilder();
 			StringBuilder temp=new StringBuilder();
 			for(int e=0;e<string.length();e++){
-				if('\''!=string.charAt(e)&&'"'!=string.charAt(e)) {
+				if('\''!=string.charAt(e)&&'"'!=string.charAt(e)){
 					temp.append(string.charAt(e));
-					if((e+1)==string.length()) {
+					if((e+1)==string.length()){
 						/* 获取非字符(串)常量子串 */
 						buffer.append(temp.toString().replaceAll("[\\s]+"," "));
 						temp.delete(0,temp.length());
@@ -57,7 +84,7 @@ public final class StringUtil {
 					for(int i=e+1;i<string.length();i++){
 						e=i;
 						temp.append(string.charAt(i));
-						if(string.charAt(i)==token) {
+						if(string.charAt(i)==token){
 							break;
 						}
 					}
@@ -71,27 +98,44 @@ public final class StringUtil {
 	}
 
 	/**
-	 * 生成uuid
+	 * 字符串首字母大写
+	 * @param string
 	 * @return
 	 */
-	public static String uuid(){
-		UUID uuid=UUID.randomUUID();
-		return uuid.toString().replaceAll("-","").replaceAll("_","");
+	public static String capitalize(String string){
+		int strLen;
+		return string!=null&&(strLen=string.length())!=0 ? (new StringBuilder(strLen)).append(Character.toTitleCase(string.charAt(0))).append(string.substring(1)).toString() : string;
 	}
 
 	/**
-	 * 返回单引号字符
+	 * 对象转字符串
+	 * @param object
 	 * @return
 	 */
-	public static String getSingleQuoteToken(){
-		return "'";
-	}
-
-	/**
-	 * 返回双引号字符
-	 * @return
-	 */
-	public static String getDoubleQuoteToken(){
-		return "\"";
+	public static String toString(Object object){
+		if(null!=object){
+			StringBuilder builder=new StringBuilder();
+			Class<?> clazz=object.getClass();
+			builder.append("{");
+			builder.append("class: ").append(clazz.getName()).append(", ");
+			builder.append("fields: ").append("{");
+			final Field[] fields=clazz.getDeclaredFields();
+			for(int index=0;index<fields.length;index++){
+				try{
+					Field field=fields[index];
+					Object value=(Modifier.isPublic(field.getModifiers())||Modifier.isProtected(field.getModifiers())||Modifier.isPrivate(field.getModifiers())) ? field.get(object) : "[PROTECTED]";
+					if((index+1)<fields.length){
+						builder.append(field.getName()).append(": ").append(value).append(", ");
+					}else{
+						builder.append(field.getName()).append(": ").append(value);
+					}
+				}catch(IllegalAccessException e){
+				}
+			}
+			builder.append("}");
+			builder.append("}");
+			return builder.toString();
+		}
+		return "";
 	}
 }
