@@ -36,7 +36,7 @@ public class MapBuilderHelper implements Serializable {
 			StringBuilder builder=new StringBuilder();
 			builder.append("{");
 			for(Map.Entry<String,Object> entry:this.map.entrySet()){
-				builder.append("\""+entry.getKey()+"\"").append(": ").append("\""+entry.getValue()+"\"");
+				builder.append("\""+entry.getKey()+"\"").append(":").append("\""+entry.getValue()+"\"");
 				builder.append(", ");
 			}
 			return new StringBuilder(builder.subSequence(0,builder.lastIndexOf(","))).append("}").toString();
