@@ -20,7 +20,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface Servlet{
 	/* Servlet的名称 */
-	String name() default "";
+	String value() default "";
 	/* Servlet的url-pattern */
 	// String value() default "";
 

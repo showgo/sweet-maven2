@@ -20,7 +20,6 @@ import org.sweet.frameworks.database.sql.SQLHelper;
  * @filename:
  * @filedescription:
  * @copyright:版权所有(C)2009-2050
- * @company:成都淞幸科技有限责任公司
  * @summary:
  * @othersummary:
  * @finisheddate:
