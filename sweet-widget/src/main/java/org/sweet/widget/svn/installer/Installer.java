@@ -27,6 +27,8 @@ import org.sweet.widget.commander.Commander;
  * @modifyrecords:
  */
 public class Installer extends DirectoryWalker<Map<String,Object>> {
+	private static final String DEFAULT_REPOSITORY_ID="maven-central";
+	private static final String DEFAULT_REPOSITORY_URL="http://192.168.1.124:8081/repository/maven-central/";
 	private File path;
 
 	/**
@@ -90,13 +92,12 @@ public class Installer extends DirectoryWalker<Map<String,Object>> {
 						Object version=map.containsKey("version") ? map.get("version") : null;
 						if(null!=groupId&&null!=artifactId&&null!=version){
 							StringBuilder builder=new StringBuilder();
-							builder.append("mvn install:install-file ");
 							builder.append("-Dfile=").append(map.get("file")).append(" ");
 							builder.append("-DgroupId=").append(map.get("groupId")).append(" ");
 							builder.append("-DartifactId=").append(map.get("artifactId")).append(" ");
 							builder.append("-Dversion=").append(map.get("version")).append(" ");
 							builder.append("-Dpackaging=").append(map.get("packaging"));
-							map.put("script",builder.toString());
+							map.put("jarInfo",builder.toString());
 							/* 添加 */
 							results.add(map);
 						}
@@ -122,13 +123,42 @@ public class Installer extends DirectoryWalker<Map<String,Object>> {
 		return results;
 	}
 
+	/**
+	 * jar包安装到本地maven仓库
+	 * @throws IOException
+	 */
 	public void install() throws IOException{
 		List<Map<String,Object>> jars=this.walk();
 		Commander commander=Commander.getCommander();
 		for(Map<String,Object> jar:jars){
-			String script=jar.get("script").toString();
-			commander.command(script);
+			StringBuilder builder=new StringBuilder();
+			builder.append("mvn install:install-file -e ");
+			builder.append(jar.get("jarInfo"));
+			commander.command(builder.toString());
 		}
 		commander.run();
+	}
+
+	/**
+	 * jar包部署到maven中心仓库(验证信息在maven配置中)
+	 * @throws IOException
+	 */
+	public void deploy() throws IOException{
+		List<Map<String,Object>> jars=this.walk();
+		Commander commander=Commander.getCommander();
+		for(Map<String,Object> jar:jars){
+			StringBuilder builder=new StringBuilder();
+			builder.append("mvn deploy:deploy-file -e ");
+			builder.append("-DrepositoryId=").append(DEFAULT_REPOSITORY_ID).append(" ");
+			builder.append("-Durl=").append(DEFAULT_REPOSITORY_URL).append(" ");
+			builder.append(jar.get("jarInfo"));
+			commander.command(builder.toString());
+		}
+		commander.run();
+	}
+
+	public static void main(String[] args) throws Exception{
+		Installer installer=new Installer("F:\\transit\\gexin");
+		installer.deploy();
 	}
 }
