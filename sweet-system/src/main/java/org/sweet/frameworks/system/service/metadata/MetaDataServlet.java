@@ -26,7 +26,7 @@ import org.sweet.frameworks.system.service.grid.pagination.Pagination;
  * @finisheddate:2016-4-14
  * @modifyrecords:
  */
-@Servlet(name="/servlet/metadata.do")
+@Servlet(value="/servlet/metadata.do")
 public final class MetaDataServlet extends HttpServlet {
 	private static final long serialVersionUID=3835210393642733385L;
 
@@ -42,7 +42,7 @@ public final class MetaDataServlet extends HttpServlet {
 			Map<String,Object> data=MapUtil.getParameterMap(request);
 			IDataSource service=new MetaDataSource(request);
 			Map<String,Object> param=new HashMap<String,Object>();
-			if(null!=data) {
+			if(null!=data){
 				param.putAll(data);
 			}
 			/* 翻页数据 */
@@ -53,7 +53,7 @@ public final class MetaDataServlet extends HttpServlet {
 			out.write("{}");
 			e.printStackTrace();
 		}finally{
-			if(null!=out) {
+			if(null!=out){
 				out.flush();
 				out.close();
 			}

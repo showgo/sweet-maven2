@@ -29,7 +29,7 @@ import org.sweet.frameworks.ui.resources.URLParameter;
  * @finisheddate:2016-4-14
  * @modifyrecords:
  */
-@Servlet(name="/servlet/tree.do")
+@Servlet(value="/servlet/tree.do")
 public final class TreeServlet extends HttpServlet {
 	private static final long serialVersionUID=-4640860678047138875L;
 

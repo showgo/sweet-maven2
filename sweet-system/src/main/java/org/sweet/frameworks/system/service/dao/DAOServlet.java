@@ -27,7 +27,7 @@ import org.sweet.frameworks.ui.resources.URLParameter;
  * @finisheddate:2016-4-14
  * @modifyrecords:
  */
-@Servlet(name="/servlet/baseDAO.do")
+@Servlet(value="/servlet/baseDAO.do")
 public final class DAOServlet extends HttpServlet {
 	private static final long serialVersionUID=-4640860678047138875L;
 

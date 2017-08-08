@@ -10,11 +10,12 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.http.HttpServlet;
 
 import org.sweet.frameworks.foundation.annotation.servlet.Servlet;
+import org.sweet.frameworks.foundation.resource.ClassResources;
 import org.sweet.frameworks.foundation.util.debug.Debug;
+import org.sweet.frameworks.foundation.util.list.ListWrapper;
+import org.sweet.frameworks.system.loader.AnnotationClassesLoader;
 import org.sweet.frameworks.system.loader.DatabaseConfigLoader;
 import org.sweet.frameworks.system.loader.MessagesLoader;
-import org.sweet.frameworks.system.loader.ServletClassResources;
-import org.sweet.frameworks.system.loader.ServletResourceLoader;
 import org.sweet.frameworks.system.loader.SystemConfigLoader;
 import org.sweet.frameworks.ui.components.UIComponentsLoader;
 
@@ -60,20 +61,19 @@ public final class SystemConfigListener extends HttpServlet implements ServletCo
 	private static void loadServlets(ServletContextEvent sce){
 		servletContext=sce.getServletContext();
 		Map<String,Class<?>> classMap=new HashMap<String,Class<?>>();
-		List<String> setClasses=ServletResourceLoader.getServletClasses(servletContext);
-		StringBuilder buffer=new StringBuilder();
+		List<String> setClasses=AnnotationClassesLoader.getClasses(servletContext,Servlet.class);
+		ListWrapper<String> buffer=new ListWrapper<String>();
 		for(String clazz:setClasses){
-			Class<?> cls=ServletClassResources.getResourceAsClass(clazz);
+			Class<?> cls=ClassResources.getResourceAsClass(clazz);
 			Servlet annotationInstance=cls.getAnnotation(Servlet.class);
-			String annotationAttrValue=annotationInstance.name();
+			String annotationAttrValue=annotationInstance.value();
 			if(!"".equals(annotationAttrValue)){
 				classMap.put(annotationAttrValue,cls);
-				buffer.append(cls.getName());
-				buffer.append(", ");
+				buffer.push(cls.getName());
 			}
 		}
 		servletContext.setAttribute("servletClassMap",classMap);
-		Debug.info(SystemConfigListener.class,"Servlet(s): ["+buffer.substring(0,buffer.lastIndexOf(","))+"] ");
+		Debug.info(SystemConfigListener.class,"Servlet(s): ["+buffer.join(", ")+"] ");
 		Debug.info(SystemConfigListener.class,"[Load servlet(s) completed]");
 	}
 }

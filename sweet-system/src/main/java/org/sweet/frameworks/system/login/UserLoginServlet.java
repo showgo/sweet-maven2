@@ -30,7 +30,7 @@ import org.sweet.frameworks.system.session.Session;
  * @finisheddate:2016-4-14
  * @modifyrecords:
  */
-@Servlet(name="/servlet/login.do",allowValidated=false)
+@Servlet(value="/servlet/login.do",allowValidated=false)
 public final class UserLoginServlet extends HttpServlet {
 	private static final long serialVersionUID=-4640860678047138875L;
 
