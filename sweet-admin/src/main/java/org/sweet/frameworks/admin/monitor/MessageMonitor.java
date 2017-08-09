@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.sweet.frameworks.foundation.annotation.servlet.Servlet;
 import org.sweet.frameworks.foundation.resource.PropertiesReader;
 
-@Servlet(name="/servlet/message.do",allowValidated=false)
+@Servlet(value="/servlet/message.do",allowValidated=false)
 public class MessageMonitor extends HttpServlet {
 	private static final long serialVersionUID=-4640860678047138875L;
 

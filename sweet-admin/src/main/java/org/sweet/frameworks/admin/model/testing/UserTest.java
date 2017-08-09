@@ -20,7 +20,7 @@ import org.sweet.frameworks.security.authentication.user.manager.UserServiceMana
  * @Version: 1.0.0
  * @ModifyRecords:
  */
-@Servlet(name="/servlet/user.do",allowValidated=false)
+@Servlet(value="/servlet/user.do",allowValidated=false)
 public final class UserTest extends HttpServlet {
 	private static final long serialVersionUID=-4640860678047138875L;
 

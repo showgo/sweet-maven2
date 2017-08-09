@@ -4,7 +4,18 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <dependent-module archiveName="sweet-system-2.2.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sweet-system/sweet-system">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sweet-foundation-2.2.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sweet-foundation/sweet-foundation">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sweet-security-2.2.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sweet-security/sweet-security">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sweet-ui-2.2.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sweet-ui/sweet-ui">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="sweet-admin"/>
         <property name="java-output-path" value="/sweet-admin/target/classes"/>
     </wb-module>
