@@ -63,7 +63,7 @@ public final class UserLoginServlet extends HttpServlet {
 	 */
 	private void doLogin(HttpServletRequest request,HttpServletResponse response,Map<String,Object> data) throws IOException,SQLException{
 		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=utf-8");
+		response.setContentType("text/html; charset=UTF-8");
 		UserService service=new UserServiceManager();
 		UserAuthenticationProvider provider=new UserAuthenticationProvider(service);
 		try{
@@ -90,7 +90,7 @@ public final class UserLoginServlet extends HttpServlet {
 	 */
 	private void doLogout(HttpServletRequest request,HttpServletResponse response,Map<String,Object> data) throws IOException,SQLException{
 		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=utf-8");
+		response.setContentType("text/html; charset=UTF-8");
 		Session.destroy(request);
 		response.sendRedirect(request.getContextPath()+"/index.xhtml?sessionId=-1");
 		return;
@@ -106,7 +106,7 @@ public final class UserLoginServlet extends HttpServlet {
 	 */
 	private void doRegist(HttpServletRequest request,HttpServletResponse response,Map<String,Object> data) throws IOException,SQLException{
 		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=utf-8");
+		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out=response.getWriter();
 		UserService service=new UserServiceManager(request);
 		Map<String,Object> map=new HashMap<String,Object>();

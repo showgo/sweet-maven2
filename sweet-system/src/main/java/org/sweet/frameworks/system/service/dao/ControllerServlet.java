@@ -19,16 +19,16 @@ import org.sweet.frameworks.system.generator.GeneratorFactory;
 import org.sweet.frameworks.ui.resources.URLParameter;
 
 /**
- * 基础DAOServlet
- * @filename:DAOServlet
+ * 基础ControllerServlet
+ * @filename:ControllerServlet
  * @filedescription:
  * @version:1.0.0
  * @author:wugz
  * @finisheddate:2016-4-14
  * @modifyrecords:
  */
-@Servlet(value="/servlet/baseDAO.do")
-public final class DAOServlet extends HttpServlet {
+@Servlet(value="/servlet/controller.do")
+public final class ControllerServlet extends HttpServlet {
 	private static final long serialVersionUID=-4640860678047138875L;
 
 	public void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{

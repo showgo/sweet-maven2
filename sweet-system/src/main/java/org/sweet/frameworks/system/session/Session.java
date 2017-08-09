@@ -113,9 +113,9 @@ public final class Session {
 			}
 		}catch(IllegalStateException e){
 			e.printStackTrace();
+			destroy(current);
 		}finally{
 		}
-		destroy(current);
 		return false;
 	}
 
