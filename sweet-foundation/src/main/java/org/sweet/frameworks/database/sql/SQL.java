@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.sweet.frameworks.database.core.DatabaseSession;
-import org.sweet.frameworks.database.dao.DAO;
 
 /**
  * SQL

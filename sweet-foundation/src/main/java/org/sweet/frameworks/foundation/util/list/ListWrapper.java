@@ -49,8 +49,7 @@ public class ListWrapper<T> {
 				builder.append(separator);
 				builder.append(list.get(e).toString());
 			}
-			return builder.toString();
 		}
-		return null;
+		return builder.toString();
 	}
 }
