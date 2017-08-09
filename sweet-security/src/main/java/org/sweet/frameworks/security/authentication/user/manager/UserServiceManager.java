@@ -23,7 +23,7 @@ import org.sweet.frameworks.security.authentication.user.authority.UserAuthority
  * @ModifyRecords:
  */
 public class UserServiceManager extends Service implements UserService {
-	private HttpServletRequest request;
+	protected HttpServletRequest request;
 
 	public UserServiceManager(){
 	}
