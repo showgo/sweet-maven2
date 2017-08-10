@@ -47,7 +47,7 @@ public final class ControllerServlet extends HttpServlet {
 				Object result=this.model.getMethod().invoke(object,MapUtil.fromURL(this.model.getRequestUri()));
 				out.write(JSONUtil.fromObject(ResponseMap.ok(result)));
 			}else{
-				throw new Exception("请求错误: "+new String(Base64.decodeBase64(request.getParameter("uri"))));
+				throw new Exception("Bad Request: "+new String(Base64.decodeBase64(request.getParameter("uri"))));
 			}
 		}catch(Exception e){
 			out.write(JSONUtil.fromObject(ResponseMap.fail(e.getMessage())));
