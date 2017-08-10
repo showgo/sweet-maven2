@@ -6,6 +6,7 @@ import java.util.Map;
 public class ControllerModel {
 	private Class<?> controller=null;
 	private Method method=null;
+	private String requestUri=null;
 	private boolean allowValidated=true;
 
 	/**
@@ -37,6 +38,14 @@ public class ControllerModel {
 
 	public Method getMethod(){
 		return method;
+	}
+
+	public String getRequestUri(){
+		return requestUri;
+	}
+
+	public void setRequestUri(String requestUri){
+		this.requestUri=requestUri;
 	}
 
 	public boolean allowValidated(){

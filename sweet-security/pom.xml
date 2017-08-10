@@ -5,12 +5,18 @@
 	<version>2.2.0</version>
 
 	<properties>
+		<commons-codec.version>1.10</commons-codec.version>
 		<el.version>2.2.4</el.version>
 		<jstl.version>1.2</jstl.version>
 		<servlet.version>2.4</servlet.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${commons-codec.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>javax.el</groupId>
 			<artifactId>javax.el-api</artifactId>

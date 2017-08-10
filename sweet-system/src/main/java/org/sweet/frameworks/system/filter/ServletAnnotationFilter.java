@@ -15,6 +15,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.codec.binary.Base64;
 import org.sweet.frameworks.foundation.annotation.servlet.Servlet;
 import org.sweet.frameworks.foundation.resource.ResourcePathUtil;
 import org.sweet.frameworks.foundation.util.debug.Debug;
@@ -49,10 +50,10 @@ public class ServletAnnotationFilter implements Filter {
 		HttpServletResponse resp=(HttpServletResponse)response;
 		Map<String,Class<?>> classMap=(Map<String,Class<?>>)this.servletContext.getAttribute("servletClassMap");
 		String uri=this.getURI(req);
-		Class<?> clazz=classMap.get(uri);
+		Class<?> servletClazz=classMap.get(uri);
 		Object obj=null;
 		try{
-			obj=clazz.newInstance();
+			obj=servletClazz.newInstance();
 		}catch(InstantiationException e1){
 			e1.printStackTrace();
 		}catch(IllegalAccessException e1){
@@ -60,10 +61,30 @@ public class ServletAnnotationFilter implements Filter {
 		}
 		/* 调用服务方法:doGet or doPost */
 		String reqMethod=req.getMethod();
-		Method targetMethod=null;
+		Method initMethod=null;
+		Method destMethod=null;
+		ControllerModel model=null;
+		/* 如果是/servlet/controller.do则先执行初始化 */
+		if(uri.indexOf("/servlet/controller.do")!=-1){
+			try{
+				Map<String,ControllerModel> controllerClassMap=(Map<String,ControllerModel>)this.servletContext.getAttribute("controllerClassMap");
+				String encryptedUri=request.getParameter("uri");
+				String requestUri=new String(Base64.decodeBase64(encryptedUri));
+				String baseUri=this.getBaseURI(requestUri);
+				model=controllerClassMap.get(baseUri);
+				if(null!=model){
+					model.setRequestUri(requestUri);
+				}
+				initMethod=servletClazz.getDeclaredMethod("initControllerModel",ControllerModel.class);
+			}catch(NoSuchMethodException e){
+				e.printStackTrace();
+			}catch(SecurityException e){
+				e.printStackTrace();
+			}
+		}
 		if(reqMethod.equalsIgnoreCase("get")){
 			try{
-				targetMethod=clazz.getDeclaredMethod("doGet",HttpServletRequest.class,HttpServletResponse.class);
+				destMethod=servletClazz.getDeclaredMethod("doGet",HttpServletRequest.class,HttpServletResponse.class);
 			}catch(SecurityException e){
 				e.printStackTrace();
 			}catch(NoSuchMethodException e){
@@ -71,7 +92,7 @@ public class ServletAnnotationFilter implements Filter {
 			}
 		}else{
 			try{
-				targetMethod=clazz.getDeclaredMethod("doPost",HttpServletRequest.class,HttpServletResponse.class);
+				destMethod=servletClazz.getDeclaredMethod("doPost",HttpServletRequest.class,HttpServletResponse.class);
 			}catch(SecurityException e){
 				e.printStackTrace();
 			}catch(NoSuchMethodException e){
@@ -80,12 +101,17 @@ public class ServletAnnotationFilter implements Filter {
 		}
 		try{
 			/* 校验session */
-			boolean allowValidated=clazz.getAnnotation(Servlet.class).allowValidated();
+			boolean allowValidated=servletClazz.getAnnotation(Servlet.class).allowValidated();
 			if((allowValidated&&Session.validate(req))||!allowValidated){
 				/* 调用doGet或doPost */
 				resp.addHeader("session.status","normal");
 				resp.addHeader("session.url",null);
-				targetMethod.invoke(obj,req,resp);
+				if(null!=initMethod){
+					initMethod.invoke(obj,model);
+				}
+				if(null!=destMethod){
+					destMethod.invoke(obj,req,resp);
+				}
 			}else{
 				/* 会话错误 */
 				throw new SessionException("System session failure...");
@@ -118,6 +144,15 @@ public class ServletAnnotationFilter implements Filter {
 			return "/"+uri;
 		}
 		return uri;
+	}
+
+	/**
+	 * 获得访问的相对baseUri
+	 * @param request
+	 * @return
+	 */
+	public String getBaseURI(String uri){
+		return uri.indexOf("?")!=-1 ? uri.substring(0,uri.indexOf("?")) : uri;
 	}
 
 	/**
