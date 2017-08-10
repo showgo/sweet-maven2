@@ -38,7 +38,7 @@ public class ControllerModelParser {
 				RestMapping mapping=method.getAnnotation(RestMapping.class);
 				if(null!=mapping&&null!=mapping.value()&&!"".equals(mapping.value())){
 					String uri=controllerValue+this.prettyUri(mapping.value());
-					map.put(uri,new ControllerModel(cls,method.getName(),controller.allowValidated()));
+					map.put(uri,new ControllerModel(cls,method.getName(),uri));
 				}
 			}
 		}

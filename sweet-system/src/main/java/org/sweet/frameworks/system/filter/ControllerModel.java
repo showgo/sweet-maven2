@@ -7,14 +7,14 @@ public class ControllerModel {
 	private Class<?> controller=null;
 	private Method method=null;
 	private String requestUri=null;
-	private boolean allowValidated=true;
 
 	/**
 	 * 构造函数
 	 * @param controller
 	 * @param method
+	 * @param requestUri
 	 */
-	public ControllerModel(Class<?> controller,String method,boolean allowValidated){
+	public ControllerModel(Class<?> controller,String method,String requestUri){
 		this.controller=controller;
 		try{
 			this.method=controller.getDeclaredMethod(method,Map.class);
@@ -29,7 +29,7 @@ public class ControllerModel {
 				e1.printStackTrace();
 			}
 		}
-		this.allowValidated=allowValidated;
+		this.requestUri=requestUri;
 	}
 
 	public Class<?> getController(){
@@ -46,9 +46,5 @@ public class ControllerModel {
 
 	public void setRequestUri(String requestUri){
 		this.requestUri=requestUri;
-	}
-
-	public boolean allowValidated(){
-		return allowValidated;
 	}
 }
