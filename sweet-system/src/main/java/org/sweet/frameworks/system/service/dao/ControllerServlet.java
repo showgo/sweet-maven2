@@ -24,7 +24,7 @@ import org.sweet.frameworks.system.filter.ResponseMap;
  * @finisheddate:2016-4-14
  * @modifyrecords:
  */
-@Servlet(value="/servlet/controller.do",allowValidated=false)
+@Servlet(value="/servlet/controller.do",allowValidated=true)
 public final class ControllerServlet extends HttpServlet {
 	private static final long serialVersionUID=-4640860678047138875L;
 	private ControllerModel model=null;
